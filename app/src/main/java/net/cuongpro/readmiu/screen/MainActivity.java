@@ -19,6 +19,7 @@ import net.cuongpro.readmiu.screen.fragment.SettingFragment;
 
 public class MainActivity extends AppCompatActivity {
     ActivityMainBinding activityMainBinding;
+    // cường đang testgit nè
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
