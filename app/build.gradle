@@ -42,5 +42,5 @@ dependencies {
     // menubottom custem
     implementation 'com.aurelhubert:ahbottomnavigation:2.3.4'
     // menu bottom custem
-    implementation 'curved_navigation_bar: ^1.0.3'
+//    implementation 'curved_navigation_bar: ^1.0.3'
 }

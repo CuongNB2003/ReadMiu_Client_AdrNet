@@ -1,20 +1,36 @@
 <resources>
     <string name="app_name">ReadMiu</string>
+
     <string name="title_home">Home</string>
     <string name="title_setting">Setting</string>
     <string name="title_favourite">Favourite</string>
+
     <string name="txtEdUser">Username</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="txtEdPass">Password</string>
     <string name="txtBtnLogin">Đăng Nhập</string>
     <string name="txtBtnRe">Đăng Ký</string>
     <string name="txtEdRePass">Re-Password</string>
     <string name="txtDoiMatKhau">Bạn quên mật khẩu ư ?</string>
+
     <string name="txtBtnNext">Tiếp</string>
     <string name="txtInfoUser">Thông tin</string>
     <string name="txtEdEmail">Email</string>
     <string name="txtFullname">Fullname</string>
     <string name="txtEdPhone">Phone</string>
+
     <string name="txtWecome">Chào mừng đến với ReadMiu.</string>
     <string name="txtMieuTa">Người phát triển phần mềm.</string>
+
+    <string name="txtHoSo">Hồ sơ</string>
+    <string name="txtMoDau">Hãy đăng nhập để sử dụng tất cả các chức năng của ReadMiu.</string>
+    <string name="txtPhone"> 0339760892</string>
+    <string name="txtEmail"> bacuong15423@gmail.com</string>
+    <string name="txtAddress"> Cao đẳng FPT polytechnic</string>
+    <string name="txtBtnLogout">Đăng xuất</string>
+    <string name="txtDSYT">Danh sách yêu thích</string>
+    <string name="txtLSD">Lịch sử đọc</string>
+    <string name="txtDMK">Đổi mật khẩu</string>
+    <string name="txtTTCN">Đổi thông tin</string>
+    <string name="txtDPT">Chức năng đang trong giai đoạn phát triên.</string>
+    <string name="txtTB">Thông báo</string>
 </resources>

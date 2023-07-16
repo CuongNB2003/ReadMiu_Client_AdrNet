@@ -22,6 +22,6 @@ public class WecomeActivity extends AppCompatActivity {
                 startActivity(new Intent(WecomeActivity.this, MainActivity.class));
                 finish();
             }
-        }, 3000);
+        }, 1000);
     }
 }
