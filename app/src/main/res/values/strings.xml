@@ -2,6 +2,17 @@
     <string name="app_name">ReadMiu</string>
     <string name="title_home">Home</string>
     <string name="title_setting">Setting</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="title_favourite">Favourite</string>
+    <string name="txtEdUser">Username</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="txtEdPass">Password</string>
+    <string name="txtBtnLogin">Đăng Nhập</string>
+    <string name="txtBtnRe">Đăng Ký</string>
+    <string name="txtEdRePass">Re-Password</string>
+    <string name="txtDoiMatKhau">Bạn quên mật khẩu ư ?</string>
+    <string name="txtBtnNext">Tiếp</string>
+    <string name="txtInfoUser">Thông tin</string>
+    <string name="txtEdEmail">Email</string>
+    <string name="txtFullname">Fullname</string>
+    <string name="txtEdPhone">Phone</string>
 </resources>

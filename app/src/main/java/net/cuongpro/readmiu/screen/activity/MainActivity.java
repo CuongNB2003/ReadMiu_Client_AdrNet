@@ -1,4 +1,4 @@
-package net.cuongpro.readmiu.screen;
+package net.cuongpro.readmiu.screen.activity;
 
 import static net.cuongpro.readmiu.R.id.*;
 
@@ -14,6 +14,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import net.cuongpro.readmiu.R;
 import net.cuongpro.readmiu.databinding.ActivityMainBinding;
+import net.cuongpro.readmiu.screen.fragment.FavouriteFragment;
 import net.cuongpro.readmiu.screen.fragment.HomeFragment;
 import net.cuongpro.readmiu.screen.fragment.SettingFragment;
 
@@ -33,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
                 replaceFrament(new HomeFragment());
             } else if (itemId == nav_setting) {
                 replaceFrament(new SettingFragment());
+            } else if (itemId == nav_favourite){
+                replaceFrament(new FavouriteFragment());
             }
             return true;
         });
