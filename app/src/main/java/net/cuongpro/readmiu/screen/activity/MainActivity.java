@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         //Thay đổi hiệu ứng click vào icon
         bottomNavigation.setTitleState(AHBottomNavigation.TitleState.SHOW_WHEN_ACTIVE_FORCE);
         bottomNavigation.setColored(true);
+        bottomNavigation.setBehaviorTranslationEnabled(true);
         //set màu cho icon khi click
         bottomNavigation.setAccentColor(getColor(R.color.red));
         //set màu cho icon khi ko click

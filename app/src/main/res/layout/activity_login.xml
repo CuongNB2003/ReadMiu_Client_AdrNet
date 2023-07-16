@@ -32,7 +32,7 @@
             app:helperTextTextColor="@color/red">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/ed_username"
+                android:id="@+id/ed_UserName"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:ems="10"
@@ -52,7 +52,7 @@
             app:helperTextTextColor="#FF0000">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/ed_password"
+                android:id="@+id/ed_PassWord"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:ems="10"
