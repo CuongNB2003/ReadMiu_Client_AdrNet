@@ -15,4 +15,6 @@
     <string name="txtEdEmail">Email</string>
     <string name="txtFullname">Fullname</string>
     <string name="txtEdPhone">Phone</string>
+    <string name="txtWecome">Chào mừng đến với ReadMiu.</string>
+    <string name="txtMieuTa">Người phát triển phần mềm.</string>
 </resources>
