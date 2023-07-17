@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/maunen"
     tools:context=".screen.activity.LoginActivity"
     android:padding="30dp">
     <LinearLayout
@@ -11,8 +12,8 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <TextView
-            android:layout_marginTop="200dp"
-            android:layout_marginBottom="40dp"
+            android:layout_marginTop="170dp"
+            android:layout_marginBottom="50dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="36sp"
@@ -26,8 +27,6 @@
             android:layout_height="wrap_content"
             android:hint="@string/txtEdUser"
             app:endIconMode="clear_text"
-            app:errorEnabled="true"
-            app:helperTextEnabled="true"
             app:startIconDrawable="@drawable/ic_ed_username"
             app:helperTextTextColor="@color/red">
 
@@ -41,15 +40,14 @@
 
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
+            android:layout_marginTop="5dp"
             style="@style/TextInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/txtEdPass"
             app:endIconMode="password_toggle"
             app:startIconDrawable="@drawable/ic_ed_password"
-            app:errorEnabled="true"
-            app:helperTextEnabled="true"
-            app:helperTextTextColor="#FF0000">
+            app:helperTextTextColor="@color/red">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/ed_PassWord"
@@ -62,7 +60,7 @@
                 android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
         <androidx.appcompat.widget.AppCompatButton
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="50dp"
             android:id="@+id/btn_login"
             android:layout_width="match_parent"
             android:layout_height="48dp"
@@ -83,7 +81,6 @@
             android:text="@string/txtDoiMatKhau"/>
     </LinearLayout>
     <androidx.appcompat.widget.AppCompatButton
-        android:layout_marginTop="100dp"
         android:id="@+id/btn_re"
         android:layout_gravity="bottom"
         android:layout_width="match_parent"

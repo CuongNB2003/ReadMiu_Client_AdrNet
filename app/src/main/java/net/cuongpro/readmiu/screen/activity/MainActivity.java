@@ -16,23 +16,22 @@ import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import net.cuongpro.readmiu.R;
-import net.cuongpro.readmiu.databinding.ActivityMainBinding;
 import net.cuongpro.readmiu.screen.fragment.FavouriteFragment;
 import net.cuongpro.readmiu.screen.fragment.HomeFragment;
 import net.cuongpro.readmiu.screen.fragment.SettingFragment;
 
 public class MainActivity extends AppCompatActivity {
-    AHBottomNavigation  bottomNavigation;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        bottomNavigation =  findViewById(R.id.bottomNavigationView);
+
+        AHBottomNavigation bottomNavigation =  findViewById(R.id.bottom_navigation);
         replaceFrament(new HomeFragment());
         // tạo item để cho vào bottom
-        AHBottomNavigationItem item1 = new AHBottomNavigationItem(R.string.title_home, R.drawable.ic_menu_home, R.color.white);
-        AHBottomNavigationItem item2 = new AHBottomNavigationItem(R.string.title_favourite, R.drawable.ic_menu_favorite, R.color.white);
-        AHBottomNavigationItem item3 = new AHBottomNavigationItem(R.string.title_setting, R.drawable.ic_menu_setting, R.color.white);
+        AHBottomNavigationItem item1 = new AHBottomNavigationItem(R.string.title_home, R.drawable.ic_menu_home, R.color.nav_bottom);
+        AHBottomNavigationItem item2 = new AHBottomNavigationItem(R.string.title_favourite, R.drawable.ic_menu_favorite, R.color.nav_bottom);
+        AHBottomNavigationItem item3 = new AHBottomNavigationItem(R.string.title_setting, R.drawable.ic_menu_setting, R.color.nav_bottom);
         // add item vào bottom
         bottomNavigation.addItem(item1);
         bottomNavigation.addItem(item2);
@@ -42,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigation.setColored(true);
         bottomNavigation.setBehaviorTranslationEnabled(true);
         //set màu cho icon khi click
-        bottomNavigation.setAccentColor(getColor(R.color.red));
+        bottomNavigation.setAccentColor(getColor(R.color.white));
         //set màu cho icon khi ko click
         bottomNavigation.setInactiveColor(getColor(R.color.black));
         // xử lý add fragment

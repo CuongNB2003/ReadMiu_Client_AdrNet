@@ -37,7 +37,7 @@ public class LoginActivity extends AppCompatActivity {
         edQuenMK.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LoginActivity.this, RegActivity.class);
+                Intent intent = new Intent(LoginActivity.this, PassRetriActivity.class);
                 startActivity(intent);
             }
         });

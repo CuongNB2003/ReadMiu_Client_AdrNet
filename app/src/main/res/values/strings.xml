@@ -33,4 +33,12 @@
     <string name="txtTTCN">Đổi thông tin</string>
     <string name="txtDPT">Chức năng đang trong giai đoạn phát triên.</string>
     <string name="txtTB">Thông báo</string>
+    <string name="txtDC">Đề cử</string>
+    <string name="txtKND">Không còn nội dung.</string>
+    <string name="txtRetriPass">Lấy lại mật khẩu</string>
+    <string name="txtBtnRetri">Lấy lại mật khẩu</string>
+    <string name="txtDetail">Chi tiết truyện</string>
+    <string name="txtNameComic">Tên truyện</string>
+    <string name="txtRead">Đọc truện</string>
+    <string name="txtBL">Bình luận</string>
 </resources>

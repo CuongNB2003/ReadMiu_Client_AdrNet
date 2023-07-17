@@ -1,10 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp"
+    android:padding="20dp"
     android:orientation="vertical"
+    android:background="@color/maunen"
     tools:context=".screen.fragment.HomeFragment">
-
-</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:weightSum="12"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="10"
+                android:textStyle="bold"
+                android:textSize="24dp"
+                android:text="Read Miu"/>
+            <ImageView
+                android:id="@+id/tv_timkiem"
+                android:layout_marginTop="5dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:src="@drawable/ic_timkiem"/>
+        </LinearLayout>
+        <androidx.viewpager2.widget.ViewPager2
+            android:layout_marginTop="10dp"
+            android:id="@+id/id_viewSilde"
+            android:layout_width="match_parent"
+            android:layout_height="230dp"
+            android:elevation="2dp"/>
+        <me.relex.circleindicator.CircleIndicator3
+            android:id="@+id/id_chuyensilde"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            app:ci_drawable="@drawable/background_cir"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/txtDC"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginTop="5dp"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recy_comic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

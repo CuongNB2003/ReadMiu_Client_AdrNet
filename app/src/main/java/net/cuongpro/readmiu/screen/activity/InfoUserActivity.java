@@ -23,8 +23,7 @@ public class InfoUserActivity extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(InfoUserActivity.this, RegActivity.class);
-                startActivity(intent);
+                onBackPressed();
             }
         });
         btnDangKy.setOnClickListener(new View.OnClickListener() {
@@ -36,7 +35,7 @@ public class InfoUserActivity extends AppCompatActivity {
     }
 
     private void anhXa() {
-        back = findViewById(R.id.img_back);
+        back = findViewById(R.id.img_backReg);
         fullname = findViewById(R.id.ed_fullname);
         email = findViewById(R.id.ed_email);
         phone = findViewById(R.id.ed_phone);

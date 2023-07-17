@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -14,7 +13,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <ImageView
-            android:id="@+id/img_backReg"
+            android:id="@+id/img_backRetri"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_back"
@@ -23,14 +22,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="24sp"
-            android:text="@string/txtInfoUser"
+            android:text="@string/txtRetriPass"
             android:textColor="@color/black"
             android:textStyle="bold"/>
     </LinearLayout>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hãy điền đầy đủ thông tin để có trải nghiệm tốt nhất."
+        android:text="Hãy điền đầy đủ thông tin để chúng tôi giúp bạn lấy lại tài khoản của bạn."
         android:textSize="18dp"
         android:textStyle="italic"
         android:layout_marginBottom="50dp"/>
@@ -38,12 +37,13 @@
         style="@style/TextInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/txtFullname"
+        android:hint="@string/txtEdUser"
         app:endIconMode="clear_text"
         app:startIconDrawable="@drawable/ic_ed_username"
         app:helperTextTextColor="@color/red">
+
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/ed_fullname"
+            android:id="@+id/ed_retriUsername"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:ems="10"
@@ -57,12 +57,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/txtEdEmail"
-        app:helperTextEnabled="true"
+        app:endIconMode="clear_text"
         app:startIconDrawable="@drawable/ic_email"
         app:helperTextTextColor="@color/red">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/ed_email"
+            android:id="@+id/ed_retriEmail"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:ems="10"
@@ -75,28 +75,49 @@
         style="@style/TextInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/txtEdPhone"
-        app:endIconMode="clear_text"
-        app:startIconDrawable="@drawable/ic_phone"
+        android:hint="@string/txtEdPass"
+        app:endIconMode="password_toggle"
+        app:startIconDrawable="@drawable/ic_ed_password"
         app:helperTextTextColor="@color/red">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/ed_phone"
+            android:id="@+id/ed_retriPass"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:ems="10"
+            android:inputType="textPassword"
+            android:maxLines="1"
             android:textColor="@color/black"
             android:textSize="14sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_marginTop="5dp"
+        style="@style/TextInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/txtEdRePass"
+        app:endIconMode="password_toggle"
+        app:startIconDrawable="@drawable/ic_ed_password"
+        app:helperTextTextColor="@color/red">
 
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/ed_RetriRePass"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
     </com.google.android.material.textfield.TextInputLayout>
     <androidx.appcompat.widget.AppCompatButton
         android:layout_marginTop="50dp"
-        android:id="@+id/btn_dangky"
+        android:id="@+id/btn_layTaiKhoan"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_gravity="center"
         android:background="@drawable/btn_cuttom"
-        android:text="@string/txtBtnRe"
+        android:text="@string/txtBtnRetri"
         android:textAllCaps="false"
         android:textColor="@color/black"
         android:textSize="18sp"/>

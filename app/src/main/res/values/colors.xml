@@ -6,6 +6,10 @@
     <color name="colorPrimaryDark">#6539ba</color>
     <color name="colorAccent">#FF4081</color>
     <color name="bgBottomNavigation">#fe485a</color>
-    <color name="red">#D50000</color>
+    <color name="maubutton">#009eff</color>
     <color name="xam">#BEC7BF</color>
+    <color name="maunen">#c9eeff</color>
+    <color name="nav_bottom">#66d1ff</color>
+    <color name="red">#E63A2D</color>
+
 </resources>
