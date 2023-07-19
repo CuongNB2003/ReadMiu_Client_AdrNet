@@ -3,6 +3,7 @@ package net.cuongpro.readmiu.screen.fragment;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
@@ -74,8 +75,8 @@ public class HomeFragment extends Fragment {
         lisComic = getListComic();
         adapterRecyComic = new AdapterComic(getActivity());
         adapterRecyComic.setListComic(lisComic);
-        LinearLayoutManager LinLayoutManager = new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL,false);
-        recyclerView.setLayoutManager(LinLayoutManager);
+        GridLayoutManager layoutManager = new GridLayoutManager(getActivity(), 2);
+        recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapterRecyComic);
     }
 

@@ -46,7 +46,6 @@ public class AdapterComic extends RecyclerView.Adapter<AdapterComic.ViewComicHol
         }
         holder.tvName.setText(obj.getName());
         holder.imgComic.setImageResource(obj.getImg());
-        holder.tvDesc.setText(obj.getDesc());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -70,7 +69,6 @@ public class AdapterComic extends RecyclerView.Adapter<AdapterComic.ViewComicHol
             super(itemView);
             tvName = itemView.findViewById(R.id.tv_name);
             imgComic = itemView.findViewById(R.id.img_Comic);
-            tvDesc = itemView.findViewById(R.id.tv_desc);
         }
     }
 }

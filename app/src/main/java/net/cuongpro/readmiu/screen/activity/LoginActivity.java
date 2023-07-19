@@ -31,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
         btnDangNhap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(LoginActivity.this, "Đăng nhập", Toast.LENGTH_SHORT).show();
+                LoadDangNhap();
             }
         });
         edQuenMK.setOnClickListener(new View.OnClickListener() {
@@ -41,6 +41,10 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    private void LoadDangNhap() {
+
     }
 
     private void anhXa() {
