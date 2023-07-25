@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/maunen"
+    android:background="@color/mau_nen"
     tools:context=".screen.activity.LoginActivity"
     android:padding="30dp">
     <LinearLayout
@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:textSize="36sp"
             android:text="@string/txtBtnLogin"
-            android:textColor="@color/black"
+            android:textColor="@color/text"
             android:textStyle="bold"
             android:gravity="center"/>
         <com.google.android.material.textfield.TextInputLayout
@@ -27,6 +27,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/txtEdUser"
             app:endIconMode="clear_text"
+
             app:startIconDrawable="@drawable/ic_ed_username"
             app:helperTextTextColor="@color/red">
 
@@ -34,9 +35,7 @@
                 android:id="@+id/ed_UserName"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:ems="10"
-                android:textColor="@color/black"
-                android:textSize="14sp" />
+                style="@style/TextInputEditText"/>
 
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
@@ -53,26 +52,19 @@
                 android:id="@+id/ed_PassWord"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:ems="10"
                 android:inputType="textPassword"
-                android:maxLines="1"
-                android:textColor="@color/black"
-                android:textSize="14sp" />
+                style="@style/TextInputEditText"/>
         </com.google.android.material.textfield.TextInputLayout>
         <androidx.appcompat.widget.AppCompatButton
             android:layout_marginTop="50dp"
             android:id="@+id/btn_login"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:background="@drawable/btn_cuttom"
             android:text="@string/txtBtnLogin"
-            android:textAllCaps="false"
-            android:textColor="@color/black"
-            android:textSize="18sp"/>
+            android:background="@drawable/custom_btn"
+            style="@style/AppCompatButton"/>
         <TextView
             android:layout_margin="10dp"
             android:textSize="14dp"
-            android:textColor="@color/black"
+            android:textColor="@color/text"
             android:textStyle="italic"
             android:id="@+id/tv_resetPass"
             android:gravity="center"
@@ -83,11 +75,7 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_re"
         android:layout_gravity="bottom"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:background="@drawable/btn_cuttom"
+        android:background="@drawable/custom_btn"
         android:text="@string/txtBtnRe"
-        android:textAllCaps="false"
-        android:textColor="@color/black"
-        android:textSize="18sp"/>
+        style="@style/AppCompatButton"/>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

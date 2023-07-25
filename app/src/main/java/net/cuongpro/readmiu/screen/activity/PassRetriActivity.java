@@ -39,7 +39,7 @@ public class PassRetriActivity extends AppCompatActivity {
         retriPass = findViewById(R.id.ed_retriPass);
         retriUsername = findViewById(R.id.ed_retriUsername);
         retriRePass = findViewById(R.id.ed_RetriRePass);
-        btnLayLaiTK = findViewById(R.id.btn_layTaiKhoan);
+        btnLayLaiTK = findViewById(R.id.btn_layMatKhau);
         img_back = findViewById(R.id.img_backRetri);
     }
 }

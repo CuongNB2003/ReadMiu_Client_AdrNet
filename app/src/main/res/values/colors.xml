@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
+    <color name="black">#000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="colorPrimary">#7b4bff</color>
-    <color name="colorPrimaryDark">#6539ba</color>
-    <color name="colorAccent">#FF4081</color>
-    <color name="bgBottomNavigation">#fe485a</color>
-    <color name="maubutton">#009eff</color>
-    <color name="xam">#BEC7BF</color>
-    <color name="maunen">#c9eeff</color>
-    <color name="nav_bottom">#66d1ff</color>
-    <color name="red">#E63A2D</color>
-
+    <color name="red">#E32719</color>
+<!--    chỉnh màu app cuc bộ ở đây-->
+    <color name="mau_button">#ef5740</color>
+    <color name="thang_ngang">#FFFFFFFF</color>
+    <color name="mau_nen">#113662</color>
+    <color name="nav_bottom">#6b809b</color>
+    <color name="menu_icon">#f04229</color>
+    <color name="text">#f4f4f4</color>
 </resources>

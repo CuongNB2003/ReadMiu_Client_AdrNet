@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="30dp"
-    android:background="@color/maunen"
+    android:background="@color/mau_nen"
     tools:context=".screen.activity.RegActivity">
     <TextView
         android:layout_marginTop="170dp"
@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:textSize="36sp"
         android:text="@string/txtBtnRe"
-        android:textColor="@color/black"
+        android:textColor="@color/text"
         android:textStyle="bold"
         android:gravity="center"/>
     <com.google.android.material.textfield.TextInputLayout
@@ -29,10 +29,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/ed_username"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:ems="10"
-            android:textColor="@color/black"
-            android:textSize="14sp" />
+            style="@style/TextInputEditText"/>
 
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
@@ -47,12 +44,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/ed_password"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:ems="10"
             android:inputType="textPassword"
-            android:maxLines="1"
-            android:textColor="@color/black"
-            android:textSize="14sp" />
+            style="@style/TextInputEditText" />
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
         android:layout_marginTop="5dp"
@@ -67,23 +60,14 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/ed_rePassword"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:ems="10"
             android:inputType="textPassword"
-            android:maxLines="1"
-            android:textColor="@color/black"
-            android:textSize="14sp" />
+            style="@style/TextInputEditText"/>
     </com.google.android.material.textfield.TextInputLayout>
     <androidx.appcompat.widget.AppCompatButton
         android:layout_marginTop="50dp"
         android:id="@+id/btn_next"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_gravity="center"
-        android:background="@drawable/btn_cuttom"
+        android:background="@drawable/custom_btn"
         android:text="@string/txtBtnNext"
-        android:textAllCaps="false"
-        android:textColor="@color/black"
-        android:textSize="18sp"/>
+        style="@style/AppCompatButton"/>
 
 </LinearLayout>

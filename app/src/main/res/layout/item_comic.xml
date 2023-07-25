@@ -2,31 +2,33 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="10dp"
+    app:cardCornerRadius="7dp"
     android:layout_marginTop="10dp"
+    android:layout_marginLeft="10dp"
+    android:backgroundTint="@color/mau_nen"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <LinearLayout
-        android:background="@color/maubutton"
         android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <androidx.cardview.widget.CardView
             android:layout_width="160dp"
             android:layout_height="200dp"
-            app:cardCornerRadius="10dp">
+            app:cardCornerRadius="7dp">
             <ImageView
                 android:id="@+id/img_Comic"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop">
             </ImageView>
         </androidx.cardview.widget.CardView>
         <TextView
-            android:layout_marginLeft="5dp"
             android:id="@+id/tv_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="tên truyện"
             android:textStyle="bold"
-            android:textSize="18dp"/>
+            android:textSize="14dp"
+            android:textColor="@color/text"/>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="30dp"
+    android:background="@color/mau_nen"
+    android:padding="15dp"
     tools:context=".screen.activity.ReadStoryActivity">
     <LinearLayout
         android:layout_marginBottom="10dp"
@@ -23,7 +24,7 @@
             android:layout_height="wrap_content"
             android:textSize="24sp"
             android:text="@string/txtNameComic"
-            android:textColor="@color/black"
+            android:textColor="@color/text"
             android:textStyle="bold"/>
     </LinearLayout>
 </LinearLayout>

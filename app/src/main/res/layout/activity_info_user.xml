@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="30dp"
-    android:background="@color/maunen"
+    android:padding="15dp"
+    android:background="@color/mau_nen"
     tools:context=".screen.activity.InfoUserActivity">
     <LinearLayout
         android:layout_marginBottom="10dp"
@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:textSize="24sp"
             android:text="@string/txtInfoUser"
-            android:textColor="@color/black"
+            android:textColor="@color/text"
             android:textStyle="bold"/>
     </LinearLayout>
     <TextView
@@ -33,7 +33,23 @@
         android:text="Hãy điền đầy đủ thông tin để có trải nghiệm tốt nhất."
         android:textSize="18dp"
         android:textStyle="italic"
+        android:textColor="@color/text"
         android:layout_marginBottom="50dp"/>
+    <androidx.cardview.widget.CardView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        app:cardCornerRadius="100dp"
+        android:layout_gravity="center"
+        app:cardBackgroundColor="@color/white">
+        <ImageView
+            android:id="@+id/img_Avata"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@drawable/ic_ed_username"
+            android:scaleType="centerCrop"/>
+    </androidx.cardview.widget.CardView>
+
+
     <com.google.android.material.textfield.TextInputLayout
         style="@style/TextInputLayout"
         android:layout_width="match_parent"
@@ -46,9 +62,7 @@
             android:id="@+id/ed_fullname"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:ems="10"
-            android:textColor="@color/black"
-            android:textSize="14sp" />
+            style="@style/TextInputEditText"/>
 
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
@@ -65,9 +79,7 @@
             android:id="@+id/ed_email"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:ems="10"
-            android:textColor="@color/black"
-            android:textSize="14sp" />
+            style="@style/TextInputEditText"/>
 
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
@@ -84,20 +96,13 @@
             android:id="@+id/ed_phone"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:ems="10"
-            android:textColor="@color/black"
-            android:textSize="14sp" />
+            style="@style/TextInputEditText"/>
 
     </com.google.android.material.textfield.TextInputLayout>
     <androidx.appcompat.widget.AppCompatButton
         android:layout_marginTop="50dp"
         android:id="@+id/btn_dangky"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_gravity="center"
-        android:background="@drawable/btn_cuttom"
+        android:background="@drawable/custom_btn"
         android:text="@string/txtBtnRe"
-        android:textAllCaps="false"
-        android:textColor="@color/black"
-        android:textSize="18sp"/>
+        style="@style/AppCompatButton"/>
 </LinearLayout>

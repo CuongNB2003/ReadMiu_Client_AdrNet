@@ -12,8 +12,8 @@ import android.widget.ImageView;
 import net.cuongpro.readmiu.R;
 
 public class InfoUserActivity extends AppCompatActivity {
-    ImageView back;
-    EditText fullname, email, phone;
+    ImageView back, imgAvata ;
+    EditText edFullname, edEmail, edPhone;
     Button btnDangKy;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +36,10 @@ public class InfoUserActivity extends AppCompatActivity {
 
     private void anhXa() {
         back = findViewById(R.id.img_backReg);
-        fullname = findViewById(R.id.ed_fullname);
-        email = findViewById(R.id.ed_email);
-        phone = findViewById(R.id.ed_phone);
+        edFullname = findViewById(R.id.ed_fullname);
+        edEmail = findViewById(R.id.ed_email);
+        edPhone = findViewById(R.id.ed_phone);
+        imgAvata = findViewById(R.id.img_Avata);
         btnDangKy = findViewById(R.id.btn_dangky);
     }
 }

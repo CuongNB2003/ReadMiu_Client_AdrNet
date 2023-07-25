@@ -1,36 +1,66 @@
 package net.cuongpro.readmiu.model;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Comic {
-    private String name, desc;
-    private int img;
+    @SerializedName("_id")
+    private String id;
+    @SerializedName("name")
+    private String tenChuyen;
+    @SerializedName("story_desc")
+    private String motaChuyen;
+    @SerializedName("writer_name")
+    private String tenTacGia;
+    @SerializedName("publishing_year")
+    private String namXuatBan;
+    @SerializedName("cover_img")
+    private String anhBia;
 
-    public Comic(String name, String desc, int img) {
-        this.name = name;
-        this.desc = desc;
-        this.img = img;
+    public String getId() {
+        return id;
     }
 
-    public String getDesc() {
-        return desc;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public String getTenChuyen() {
+        return tenChuyen;
     }
 
-    public String getName() {
-        return name;
+    public void setTenChuyen(String tenChuyen) {
+        this.tenChuyen = tenChuyen;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getMotaChuyen() {
+        return motaChuyen;
     }
 
-    public int getImg() {
-        return img;
+    public void setMotaChuyen(String motaChuyen) {
+        this.motaChuyen = motaChuyen;
     }
 
-    public void setImg(int img) {
-        this.img = img;
+    public String getTenTacGia() {
+        return tenTacGia;
+    }
+
+    public void setTenTacGia(String tenTacGia) {
+        this.tenTacGia = tenTacGia;
+    }
+
+    public String getNamXuatBan() {
+        return namXuatBan;
+    }
+
+    public void setNamXuatBan(String namXuatBan) {
+        this.namXuatBan = namXuatBan;
+    }
+
+    public String getAnhBia() {
+        return anhBia;
+    }
+
+    public void setAnhBia(String anhBia) {
+        this.anhBia = anhBia;
     }
 }

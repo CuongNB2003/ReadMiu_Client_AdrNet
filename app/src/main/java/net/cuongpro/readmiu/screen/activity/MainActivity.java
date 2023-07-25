@@ -41,9 +41,9 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigation.setColored(true);
         bottomNavigation.setBehaviorTranslationEnabled(true);
         //set màu cho icon khi click
-        bottomNavigation.setAccentColor(getColor(R.color.white));
+        bottomNavigation.setAccentColor(getColor(R.color.text));
         //set màu cho icon khi ko click
-        bottomNavigation.setInactiveColor(getColor(R.color.black));
+        bottomNavigation.setInactiveColor(getColor(R.color.mau_nen));
         // xử lý add fragment
         bottomNavigation.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {
             @Override
