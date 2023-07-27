@@ -10,18 +10,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-        <androidx.cardview.widget.CardView
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imgItemAvata"
             android:layout_width="55dp"
-            app:cardCornerRadius="100dp"
-            android:backgroundTint="@color/mau_nen"
-            android:layout_height="55dp">
-            <ImageView
-                android:id="@+id/imgItemAvata"
-                android:layout_width="55dp"
-                android:layout_height="55dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/ic_ed_username"/>
-        </androidx.cardview.widget.CardView>
+            app:civ_border_width="1dp"
+            app:civ_border_color="@color/text"
+            android:layout_height="55dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_ed_username"/>
         <LinearLayout
             android:layout_marginLeft="10dp"
             android:layout_width="match_parent"
@@ -29,20 +25,14 @@
             android:orientation="vertical">
             <TextView
                 android:id="@+id/tvItemFullName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:text="FullName"
                 android:textStyle="bold"
-                android:textColor="@color/text"
-                android:textSize="18dp"/>
+                style="@style/TextViewNone"/>
             <TextView
                 android:id="@+id/tvItemNDCmt"
                 android:layout_marginTop="5dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:text="Nội dùng comment"
-                android:textColor="@color/text"
-                android:textSize="18dp"/>
+                style="@style/TextViewNone"/>
         </LinearLayout>
     </LinearLayout>
     <TextView

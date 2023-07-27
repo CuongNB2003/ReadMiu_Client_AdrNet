@@ -19,20 +19,12 @@
             android:src="@drawable/ic_back"
             android:layout_gravity="center"/>
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="24sp"
-            android:text="@string/txtRetriPass"
-            android:textColor="@color/text"
-            android:textStyle="bold"/>
+            style="@style/TextViewTitle"
+            android:text="@string/txtRetriPass"/>
     </LinearLayout>
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/TextViewNone"
         android:text="Hãy điền đầy đủ thông tin để chúng tôi giúp bạn lấy lại tài khoản của bạn."
-        android:textSize="18dp"
-        android:textStyle="italic"
-        android:textColor="@color/text"
         android:layout_marginBottom="50dp"/>
     <com.google.android.material.textfield.TextInputLayout
         style="@style/TextInputLayout"
@@ -70,7 +62,7 @@
         style="@style/TextInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/txtEdPass"
+        android:hint="@string/txtEdPassNew"
         app:endIconMode="password_toggle"
         app:startIconDrawable="@drawable/ic_ed_password"
         app:helperTextTextColor="@color/red">
@@ -86,7 +78,7 @@
         style="@style/TextInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/txtEdRePass"
+        android:hint="@string/txtEdRePassNew"
         app:endIconMode="password_toggle"
         app:startIconDrawable="@drawable/ic_ed_password"
         app:helperTextTextColor="@color/red">
@@ -100,7 +92,7 @@
     <androidx.appcompat.widget.AppCompatButton
         android:layout_marginTop="50dp"
         android:id="@+id/btn_layMatKhau"
-        android:background="@drawable/custom_btn"
+        android:background="@drawable/custom_btn_color"
         android:text="@string/txtBtnRetri"
         style="@style/AppCompatButton"/>
 </LinearLayout>

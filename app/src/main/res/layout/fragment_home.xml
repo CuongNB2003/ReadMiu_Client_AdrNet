@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="15dp"
+    android:scrollbars="vertical"
     android:background="@color/mau_nen"
     tools:context=".screen.fragment.HomeFragment">
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -13,21 +14,19 @@
         android:layout_height="match_parent">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
             <LinearLayout
+                android:layout_gravity="top"
                 android:weightSum="12"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <TextView
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
                     android:layout_weight="10"
-                    android:textStyle="bold"
-                    android:textSize="24dp"
-                    android:textColor="@color/text"
-                    android:text="Read Miu"/>
+                    style="@style/TextViewTitle"
+                    android:text="@string/app_name"/>
                 <ImageView
                     android:id="@+id/tv_timkiem"
                     android:layout_marginTop="5dp"
@@ -39,7 +38,7 @@
             <androidx.coordinatorlayout.widget.CoordinatorLayout
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="200dp">
+                android:layout_height="230dp">
                 <androidx.viewpager2.widget.ViewPager2
                     android:id="@+id/id_viewSilde"
                     android:layout_width="match_parent"
@@ -53,17 +52,14 @@
                     app:ci_drawable="@drawable/background_cir"/>
             </androidx.coordinatorlayout.widget.CoordinatorLayout>
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/TextViewBold"
                 android:text="@string/txtDC"
-                android:textSize="20sp"
-                android:textStyle="bold"
                 android:textColor="@color/text"
                 android:layout_marginTop="10dp"/>
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recy_comic"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="match_parent" />
         </LinearLayout>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

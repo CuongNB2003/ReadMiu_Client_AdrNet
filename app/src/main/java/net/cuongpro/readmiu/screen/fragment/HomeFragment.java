@@ -11,6 +11,7 @@ import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +23,7 @@ import net.cuongpro.readmiu.R;
 import net.cuongpro.readmiu.adapter.AdapterComic;
 import net.cuongpro.readmiu.adapter.AdapterSlides;
 import net.cuongpro.readmiu.api.ApiService;
+import net.cuongpro.readmiu.api.LinkApi;
 import net.cuongpro.readmiu.model.Comic;
 import net.cuongpro.readmiu.model.model_api.GetComic;
 import net.cuongpro.readmiu.model.slide.DepthPageTransformer;
@@ -49,6 +51,7 @@ public class HomeFragment extends Fragment {
     private AdapterSlides adapterSlides;
     private RecyclerView recyclerView;
     private SwipeRefreshLayout refreshLayout;
+
     private Handler handler = new Handler();
     private Runnable runnable = new Runnable() {
         @Override
@@ -90,14 +93,13 @@ public class HomeFragment extends Fragment {
                 getListComic();
             }
         });
-        getListComic();
         return view;
     }
 
     @Override
     public void onStart() {
         super.onStart();
-//        getListComic();
+        getListComic();
     }
 
     private void getListComic() {
@@ -106,7 +108,9 @@ public class HomeFragment extends Fragment {
             public void onResponse(Call<GetComic> call, Response<GetComic> response) {
                 if(response.isSuccessful()){
                     getComic = response.body();
-                    Toast.makeText(getContext(), ""+getComic.getMsg(), Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getContext(), ""+getComic.getMsg(), Toast.LENGTH_SHORT).show();
+                    Log.d(LinkApi.TAG, "Load dữ liệu list comic thành công: "+ getComic.getMsg());
+
                     lisComic = Arrays.asList(getComic.getComics());
 
                     adapterRecyComic = new AdapterComic(getContext());
@@ -132,9 +136,10 @@ public class HomeFragment extends Fragment {
             @Override
             public void onFailure(Call<GetComic> call, Throwable t) {
                 try {
-                    Toast.makeText(getContext(), "Load data thất bại", Toast.LENGTH_SHORT).show();
+                    Log.d(LinkApi.TAG, "Load data comic thất bại"+t.getLocalizedMessage());
+                    Toast.makeText(getContext(), "Hãy kết nối với mạng", Toast.LENGTH_SHORT).show();
                 }catch (NullPointerException e){
-
+                    Log.d(LinkApi.TAG, "NullPointerException"+e.getMessage());
                 }
             }
         });

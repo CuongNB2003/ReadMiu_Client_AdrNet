@@ -41,4 +41,8 @@
     <string name="txtNameComic">Tên truyện</string>
     <string name="txtRead">Bắt đầu đọc</string>
     <string name="txtBL">Bình luận nổi bật</string>
+    <string name="txtlogin">Để sử dụng chức năng này bạn cần đăng nhập.</string>
+    <string name="txtHuy">Hủy</string>
+    <string name="txtEdPassNew">Pass New</string>
+    <string name="txtEdRePassNew">Re-PassNew</string>
 </resources>

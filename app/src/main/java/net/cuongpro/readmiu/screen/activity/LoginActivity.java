@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import net.cuongpro.readmiu.R;
 import net.cuongpro.readmiu.api.ApiService;
+import net.cuongpro.readmiu.api.LinkApi;
 import net.cuongpro.readmiu.model.model_api.InfoUser;
 import net.cuongpro.readmiu.model.model_api.Login;
 
@@ -22,7 +23,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
-    private static String TAG = "========Cuong";
     private EditText edTaiKhoan, edMatKhau;
     private Button btnDangNhap, btnDangKy;
     private TextView tvQuenMK;
@@ -37,8 +37,9 @@ public class LoginActivity extends AppCompatActivity {
         btnDangKy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LoginActivity.this, RegActivity.class);
+                Intent intent = new Intent(LoginActivity.this, InfoUserActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
         btnDangNhap.setOnClickListener(new View.OnClickListener() {
@@ -46,7 +47,9 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String taikhoan = edTaiKhoan.getText().toString();
                 String matkhau = edMatKhau.getText().toString();
-                LoginApp(taikhoan, matkhau);
+                if(validate(taikhoan, matkhau)){
+                    LoginApp(taikhoan, matkhau);
+                }
             }
         });
         tvQuenMK.setOnClickListener(new View.OnClickListener() {
@@ -54,8 +57,21 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(LoginActivity.this, PassRetriActivity.class);
                 startActivity(intent);
+//                finish();
             }
         });
+    }
+
+    private boolean validate(String taikhoan, String matkhau) {
+        if(taikhoan.isEmpty()){
+            edTaiKhoan.setError("Phải nhập tài khoản");
+            return false;
+        }
+        if(matkhau.isEmpty()){
+            edMatKhau.setError("Phải nhập mật khẩu !!!");
+            return false;
+        }
+        return true;
     }
 
     private void LoginApp(String username, String password) {
@@ -64,11 +80,18 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(Call<Login> call, Response<Login> response) {
                 if(response.isSuccessful()){
                     login = response.body();
-                    Toast.makeText(LoginActivity.this, ""+response.body().getMsg(), Toast.LENGTH_SHORT).show();
+                    if(login.getCheck() == false){
+                        if(login.getMsg().equalsIgnoreCase("Sai mật khẩu")){
+                            edMatKhau.setError(login.getMsg());
+                        }else if(login.getMsg().equalsIgnoreCase("Tài khoản không tồn tại")){
+                            edTaiKhoan.setError(login.getMsg());
+                        }
+                    }
                     if(login.getCheck() == true){
                         GetInfoUser(username);
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(intent);
+                        finish();
                     }
                 }else {
                     Toast.makeText(LoginActivity.this, "Khong load dc du lieu", Toast.LENGTH_SHORT).show();
@@ -77,7 +100,7 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Login> call, Throwable t) {
-                Log.d(TAG, "onFailure: "+ t.getLocalizedMessage());
+                Log.d(LinkApi.TAG, "onFailure: "+ t.getLocalizedMessage());
                 Toast.makeText(LoginActivity.this, "Đăng nhập thất bại", Toast.LENGTH_SHORT).show();
             }
         });
@@ -89,7 +112,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(Call<InfoUser> call, Response<InfoUser> response) {
                 if(response.isSuccessful()){
                     infoUser = response.body();
-                    Log.d(TAG, "onResponse: "+infoUser.getUser().toString());
+                    Log.d(LinkApi.TAG, "onResponse: "+infoUser.getUser().getId());
                     SharedPreferences mySharePref = getSharedPreferences("DataUser", MODE_PRIVATE);
                     SharedPreferences.Editor editor = mySharePref.edit();
                     editor.putBoolean("CheckLogin", true);
@@ -97,7 +120,7 @@ public class LoginActivity extends AppCompatActivity {
                     editor.putString("Avata", infoUser.getUser().getAvata());
                     editor.putString("Phone", infoUser.getUser().getPhone());
                     editor.putString("Email", infoUser.getUser().getEmail());
-                    editor.putString("ID", infoUser.getUser().getId());
+                    editor.putString("User", infoUser.getUser().getId());
                     editor.apply();
                 }
             }

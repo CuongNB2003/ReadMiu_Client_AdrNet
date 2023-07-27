@@ -15,6 +15,23 @@ public class Comic {
     private String namXuatBan;
     @SerializedName("cover_img")
     private String anhBia;
+    @SerializedName("list_photo")
+    private String listPhoto[];
+
+    public Comic() {
+    }
+
+    public Comic(String[] listPhoto) {
+        this.listPhoto = listPhoto;
+    }
+
+    public String[] getListPhoto() {
+        return listPhoto;
+    }
+
+    public void setListPhoto(String[] listPhoto) {
+        this.listPhoto = listPhoto;
+    }
 
     public String getId() {
         return id;

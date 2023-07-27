@@ -7,7 +7,9 @@
     <color name="mau_button">#ef5740</color>
     <color name="thang_ngang">#FFFFFFFF</color>
     <color name="mau_nen">#113662</color>
+<!--    113662   mã màu xanh đen-->
     <color name="nav_bottom">#6b809b</color>
     <color name="menu_icon">#f04229</color>
     <color name="text">#f4f4f4</color>
+<!--    f4f4f4 -->
 </resources>

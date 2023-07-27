@@ -22,6 +22,10 @@ public class User {
     @SerializedName("avata")
     private String avata;
 
+    public User(String id) {
+        this.id = id;
+    }
+
     public String getId() {
         return id;
     }

@@ -22,8 +22,9 @@ public class RegActivity extends AppCompatActivity {
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(RegActivity.this, InfoUserActivity.class);
+                Intent intent = new Intent(RegActivity.this, MainActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }

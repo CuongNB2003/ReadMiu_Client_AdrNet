@@ -10,9 +10,49 @@ public class Comment {
     @SerializedName("id_comic")
     private String idTruyen;
     @SerializedName("id_user")
-    private String idUser;
+    private User user;
     @SerializedName("cmt_content")
     private String noiDungCmt;
     @SerializedName("cmt_date")
     private String ngayCmt;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getIdTruyen() {
+        return idTruyen;
+    }
+
+    public void setIdTruyen(String idTruyen) {
+        this.idTruyen = idTruyen;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public String getNoiDungCmt() {
+        return noiDungCmt;
+    }
+
+    public void setNoiDungCmt(String noiDungCmt) {
+        this.noiDungCmt = noiDungCmt;
+    }
+
+    public String getNgayCmt() {
+        return ngayCmt;
+    }
+
+    public void setNgayCmt(String ngayCmt) {
+        this.ngayCmt = ngayCmt;
+    }
 }

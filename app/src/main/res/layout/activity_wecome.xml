@@ -6,33 +6,23 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="40dp"
-    android:background="@drawable/custom_text_input"
+    android:background="@drawable/custom_edittext_cmt"
     tools:context=".screen.activity.WecomeActivity">
     <TextView
         android:layout_marginTop="100dp"
         android:textColor="@color/mau_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:text="@string/txtWecome"
-        android:textStyle="bold"
-        android:textSize="36dp"/>
+        style="@style/TextViewMax"/>
     <TextView
         android:layout_marginTop="45dp"
-        android:textColor="@color/text"
-        android:textStyle="italic"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="24dp"
+        style="@style/TextViewTitle"
         android:text="@string/txtMieuTa"/>
     <TextView
         android:layout_marginTop="10dp"
-        android:textColor="@color/text"
-        android:textSize="18dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/TextViewNone"
         android:text="Nguyễn Bá Cường-PH22662"/>
     <ProgressBar
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="50dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"/>

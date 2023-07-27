@@ -1,6 +1,7 @@
 package net.cuongpro.readmiu.adapter;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.PagerAdapter;
 
@@ -51,7 +53,7 @@ public class AdapterSlides extends RecyclerView.Adapter<AdapterSlides.PhotoViewH
         RequestOptions requestOptions = new RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL);
         // sử dụng thư viện để load ảnh từ server
         Glide.with(context).load(LinkApi.linkUrl +obj.getAnhBia())
-                .apply(requestOptions)
+//                .apply(requestOptions)
                 .error(R.drawable.img_err)
                 .into(holder.imgSilde);
         holder.itemView.setOnClickListener(new View.OnClickListener() {

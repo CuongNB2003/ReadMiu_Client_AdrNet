@@ -5,13 +5,21 @@
         <item name="boxCornerRadiusBottomStart">10dp</item>
         <item name="boxCornerRadiusTopEnd">10dp</item>
         <item name="boxCornerRadiusTopStart">10dp</item>
+<!--        tên là boder dưới là color-->
         <item name="boxStrokeColor">@color/text</item>
         <item name="hintTextColor">@color/text</item>
         <item name="android:textColorHint">@color/text</item>
-        <item name="errorEnabled">true</item>
         <item name="startIconTint">@color/text</item>
         <item name="endIconTint">@color/text</item>
+<!--        thêm thg này để validate-->
+        <item name="errorEnabled">true</item>
 
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+<!--        số lượng đc phép nhập vào-->
+        <item name="counterEnabled">true</item>
+        <item name="counterMaxLength">20</item>
+        <item name="counterTextColor">@color/text</item>
     </style>
 
     <style name="TextInputEditText">
@@ -30,4 +38,46 @@
         <item name="android:textSize">18sp</item>
     </style>
 
+    <style name="TextViewNone">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="fontFamily">serif</item>
+        <item name="android:textColor">@color/text</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="TextViewTitle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="fontFamily">serif</item>
+        <item name="android:textColor">@color/text</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextViewBold">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="fontFamily">serif</item>
+        <item name="android:textColor">@color/text</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextViewMin">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="fontFamily">serif</item>
+        <item name="android:textColor">@color/text</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextViewMax">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="fontFamily">serif</item>
+        <item name="android:textColor">@color/text</item>
+        <item name="android:textSize">36sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 </resources>

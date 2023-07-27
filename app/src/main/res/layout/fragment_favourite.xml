@@ -9,11 +9,9 @@
     android:background="@color/mau_nen"
     tools:context=".screen.fragment.FavouriteFragment">
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:padding="70dp"
+        style="@style/TextViewBold"
         android:textColor="@color/mau_button"
-        android:textSize="36dp"
-        android:textStyle="italic"
         android:text="@string/txtDPT"/>
 
 </LinearLayout>

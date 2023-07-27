@@ -3,6 +3,7 @@ package net.cuongpro.readmiu.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,7 +56,7 @@ public class AdapterComic extends RecyclerView.Adapter<AdapterComic.ViewComicHol
         RequestOptions requestOptions = new RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL);
         // sử dụng thư viện để load ảnh từ server
         Glide.with(context).load(LinkApi.linkUrl +obj.getAnhBia())
-                .apply(requestOptions)
+//                .apply(requestOptions)
                 .error(R.drawable.img_err)
                 .into(holder.imgComic);
         holder.tvName.setText(obj.getTenChuyen());
@@ -65,6 +66,14 @@ public class AdapterComic extends RecyclerView.Adapter<AdapterComic.ViewComicHol
                 Intent intent = new Intent(context, DetailStoryActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("idComic", obj.getId());
+                bundle.putStringArray("listAnh", obj.getListPhoto());
+                bundle.putString("anhBia", obj.getAnhBia());
+                bundle.putString("tenTruyen", obj.getTenChuyen());
+                bundle.putString("tacGia", obj.getTenTacGia());
+                bundle.putString("xuatBan", obj.getNamXuatBan());
+                bundle.putString("moTa", obj.getMotaChuyen());
+
+                Log.d(LinkApi.TAG, "onClick: list anh"+obj.getListPhoto());
                 intent.putExtras(bundle);
                 context.startActivity(intent);
             }

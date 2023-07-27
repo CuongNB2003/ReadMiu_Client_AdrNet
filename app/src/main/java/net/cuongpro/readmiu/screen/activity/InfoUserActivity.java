@@ -29,7 +29,9 @@ public class InfoUserActivity extends AppCompatActivity {
         btnDangKy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(InfoUserActivity.this, RegActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
     }

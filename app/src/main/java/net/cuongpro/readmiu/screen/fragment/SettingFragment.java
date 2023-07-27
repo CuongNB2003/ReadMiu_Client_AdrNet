@@ -22,6 +22,7 @@ import com.bumptech.glide.Glide;
 
 import net.cuongpro.readmiu.R;
 import net.cuongpro.readmiu.api.LinkApi;
+import net.cuongpro.readmiu.screen.activity.InfoUserActivity;
 import net.cuongpro.readmiu.screen.activity.LoginActivity;
 import net.cuongpro.readmiu.screen.activity.MainActivity;
 import net.cuongpro.readmiu.screen.activity.RegActivity;
@@ -53,7 +54,7 @@ public class SettingFragment extends Fragment {
         tvRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), RegActivity.class);
+                Intent intent = new Intent(getActivity(), InfoUserActivity.class);
                 startActivity(intent);
             }
         });
@@ -85,10 +86,7 @@ public class SettingFragment extends Fragment {
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getContext(), MainActivity.class));
-                getActivity().finish();
-                SharedPreferences settings = getActivity().getSharedPreferences("DataUser", Context.MODE_PRIVATE);
-                settings.edit().clear().commit();
+                dialogDangXuat();
             }
         });
 
@@ -108,6 +106,29 @@ public class SettingFragment extends Fragment {
         return view;
     }
 
+    private void dialogDangXuat() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        View view = LayoutInflater.from(getActivity()).inflate(R.layout.dialog_logout, null);
+        builder.setView(view);
+        AlertDialog alertDialog = builder.create();
+        alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+        alertDialog.show();
+        // dialog
+        Button btnHuy = view.findViewById(R.id.btnHuyDX);
+        Button btnOK = view.findViewById(R.id.btnDangXuat);
+
+        btnHuy.setOnClickListener(view1 -> {
+            alertDialog.dismiss();
+        });
+
+        btnOK.setOnClickListener(view1 -> {
+            startActivity(new Intent(getContext(), MainActivity.class));
+            getActivity().finish();
+            SharedPreferences settings = getActivity().getSharedPreferences("DataUser", Context.MODE_PRIVATE);
+            settings.edit().clear().commit();
+        });
+    }
+
     private void getDataUser(){
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("DataUser", Context.MODE_PRIVATE);
         String fullname = sharedPreferences.getString("FullName","");
@@ -115,11 +136,11 @@ public class SettingFragment extends Fragment {
         String avata = sharedPreferences.getString("Avata","");
         tvFullname.setText(fullname);
         tvEmail.setText(email);
-        Glide.with(getContext()).load( LinkApi.linkUrl + avata).error(R.drawable.ic_menu_home).into(imgAvata);
+        Glide.with(getContext()).load( LinkApi.linkUrl + avata).error(R.drawable.img_err).into(imgAvata);
     }
 
     public void dialog(String thongbao) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         View view = LayoutInflater.from(getActivity()).inflate(R.layout.dialog_notification, null);
         builder.setView(view);
         AlertDialog alertDialog = builder.create();
