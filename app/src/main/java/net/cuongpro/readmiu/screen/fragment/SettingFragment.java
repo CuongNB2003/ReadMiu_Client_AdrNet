@@ -136,7 +136,7 @@ public class SettingFragment extends Fragment {
         String avata = sharedPreferences.getString("Avata","");
         tvFullname.setText(fullname);
         tvEmail.setText(email);
-        Glide.with(getContext()).load( LinkApi.linkUrl + avata).error(R.drawable.img_err).into(imgAvata);
+        Glide.with(getContext()).load( LinkApi.linkUrl + avata).error(R.drawable.ic_ed_username).into(imgAvata);
     }
 
     public void dialog(String thongbao) {

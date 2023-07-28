@@ -15,6 +15,7 @@
         android:text="@string/txtBtnRe"
         android:gravity="center"/>
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textErrUsername"
         style="@style/TextInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -29,7 +30,7 @@
 
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_marginTop="5dp"
+        android:id="@+id/textErrPass"
         style="@style/TextInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -44,7 +45,7 @@
             style="@style/TextInputEditText" />
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_marginTop="5dp"
+        android:id="@+id/textErrRePass"
         style="@style/TextInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

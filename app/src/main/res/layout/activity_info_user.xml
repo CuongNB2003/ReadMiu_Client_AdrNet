@@ -36,6 +36,7 @@
         android:scaleType="centerCrop"/>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textErrFullname"
         style="@style/TextInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -46,11 +47,13 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/ed_fullname"
             android:layout_width="match_parent"
+            android:inputType="textPersonName"
             android:layout_height="48dp"
             style="@style/TextInputEditText"/>
 
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textErrEmail"
         android:layout_marginTop="5dp"
         style="@style/TextInputLayout"
         android:layout_width="match_parent"
@@ -63,17 +66,20 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/ed_email"
             android:layout_width="match_parent"
+            android:inputType="textEmailAddress"
             android:layout_height="48dp"
             style="@style/TextInputEditText"/>
 
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textErrPhone"
         android:layout_marginTop="5dp"
         style="@style/TextInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/txtEdPhone"
         app:endIconMode="clear_text"
+        app:counterMaxLength="10"
         app:startIconDrawable="@drawable/ic_phone"
         app:helperTextTextColor="@color/red">
 
@@ -81,12 +87,14 @@
             android:id="@+id/ed_phone"
             android:layout_width="match_parent"
             android:layout_height="48dp"
+            android:maxLength="10"
+            android:inputType="phone"
             style="@style/TextInputEditText"/>
 
     </com.google.android.material.textfield.TextInputLayout>
     <androidx.appcompat.widget.AppCompatButton
         android:layout_marginTop="50dp"
-        android:id="@+id/btn_dangky"
+        android:id="@+id/btn_tiep"
         android:textColor="@color/mau_button"
         android:background="@drawable/custom_btn_none"
         android:text="@string/txtBtnNext"

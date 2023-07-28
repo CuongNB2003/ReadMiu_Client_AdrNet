@@ -7,6 +7,17 @@ public class User {
     private String id;
     @SerializedName("acc_status")
     private Boolean trangthai;
+    @SerializedName("role")
+    private Boolean vaiTro;
+
+    public User(String username, String password, String fullname, String email, String phone) {
+        this.username = username;
+        this.password = password;
+        this.fullname = fullname;
+        this.email = email;
+        this.phone = phone;
+    }
+
     @SerializedName("username")
     private String username;
     @SerializedName("password")
@@ -17,8 +28,6 @@ public class User {
     private String email;
     @SerializedName("phone")
     private String phone;
-    @SerializedName("role")
-    private Boolean vaiTro;
     @SerializedName("avata")
     private String avata;
 
@@ -98,14 +107,8 @@ public class User {
         this.avata = avata;
     }
 
-    public User(String id, String username, String password, String fullname, String email, String phone, String avata) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-        this.fullname = fullname;
-        this.email = email;
-        this.phone = phone;
-        this.avata = avata;
+
+    public User() {
     }
 
     @Override

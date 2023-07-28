@@ -14,7 +14,7 @@ public class Comment {
     @SerializedName("cmt_content")
     private String noiDungCmt;
     @SerializedName("cmt_date")
-    private String ngayCmt;
+    private Date ngayCmt;
 
     public String getId() {
         return id;
@@ -48,11 +48,11 @@ public class Comment {
         this.noiDungCmt = noiDungCmt;
     }
 
-    public String getNgayCmt() {
+    public Date getNgayCmt() {
         return ngayCmt;
     }
 
-    public void setNgayCmt(String ngayCmt) {
+    public void setNgayCmt(Date ngayCmt) {
         this.ngayCmt = ngayCmt;
     }
 }

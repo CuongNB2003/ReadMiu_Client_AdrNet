@@ -23,15 +23,32 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <TextView
-                android:id="@+id/tvItemFullName"
-                android:text="FullName"
-                android:textStyle="bold"
-                style="@style/TextViewNone"/>
+            <LinearLayout
+                android:weightSum="10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:maxLines="1"
+                    android:text="..."
+                    android:layout_weight="6"
+                    android:layout_width="0dp"
+                    android:id="@+id/tvItemFullName"
+                    android:textStyle="bold"
+                    style="@style/TextViewNone"/>
+                <TextView
+                    android:maxLines="1"
+                    android:text="..."
+                    android:layout_weight="4"
+                    android:layout_width="0dp"
+                    android:gravity="end"
+                    android:id="@+id/tvItemDate"
+                    style="@style/TextViewMin"/>
+            </LinearLayout>
             <TextView
                 android:id="@+id/tvItemNDCmt"
                 android:layout_marginTop="5dp"
-                android:text="Nội dùng comment"
+                android:text="..."
                 style="@style/TextViewNone"/>
         </LinearLayout>
     </LinearLayout>

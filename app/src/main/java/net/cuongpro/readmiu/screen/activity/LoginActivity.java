@@ -2,6 +2,7 @@ package net.cuongpro.readmiu.screen.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -11,6 +12,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.material.textfield.TextInputLayout;
 
 import net.cuongpro.readmiu.R;
 import net.cuongpro.readmiu.api.ApiService;
@@ -24,15 +27,17 @@ import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText edTaiKhoan, edMatKhau;
+    private TextInputLayout errTaiKhoan, errMatKhau;
     private Button btnDangNhap, btnDangKy;
     private TextView tvQuenMK;
     private Login login;
     private InfoUser infoUser;
+    private ProgressDialog loading;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        anhXa();
+        initUi();
 
         btnDangKy.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,9 +52,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String taikhoan = edTaiKhoan.getText().toString();
                 String matkhau = edMatKhau.getText().toString();
-                if(validate(taikhoan, matkhau)){
-                    LoginApp(taikhoan, matkhau);
-                }
+                LoginApp(taikhoan, matkhau);
             }
         });
         tvQuenMK.setOnClickListener(new View.OnClickListener() {
@@ -62,39 +65,18 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    private boolean validate(String taikhoan, String matkhau) {
-        if(taikhoan.isEmpty()){
-            edTaiKhoan.setError("Phải nhập tài khoản");
-            return false;
-        }
-        if(matkhau.isEmpty()){
-            edMatKhau.setError("Phải nhập mật khẩu !!!");
-            return false;
-        }
-        return true;
-    }
-
     private void LoginApp(String username, String password) {
         ApiService.apiService.loginApp(username, password).enqueue(new Callback<Login>() {
             @Override
             public void onResponse(Call<Login> call, Response<Login> response) {
                 if(response.isSuccessful()){
                     login = response.body();
-                    if(login.getCheck() == false){
-                        if(login.getMsg().equalsIgnoreCase("Sai mật khẩu")){
-                            edMatKhau.setError(login.getMsg());
-                        }else if(login.getMsg().equalsIgnoreCase("Tài khoản không tồn tại")){
-                            edTaiKhoan.setError(login.getMsg());
+                    if(validateLogin(login.getErr(), login.getMsg())){
+                        if(login.getCheck() == true){
+//                            Toast.makeText(LoginActivity.this, ""+login.getMsg(), Toast.LENGTH_SHORT).show();
+                            GetInfoUser(username);
                         }
                     }
-                    if(login.getCheck() == true){
-                        GetInfoUser(username);
-                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                        startActivity(intent);
-                        finish();
-                    }
-                }else {
-                    Toast.makeText(LoginActivity.this, "Khong load dc du lieu", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -105,8 +87,8 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-
     private void GetInfoUser(String username){
+        loading.show();
         ApiService.apiService.getInfoUser(username).enqueue(new Callback<InfoUser>() {
             @Override
             public void onResponse(Call<InfoUser> call, Response<InfoUser> response) {
@@ -120,24 +102,70 @@ public class LoginActivity extends AppCompatActivity {
                     editor.putString("Avata", infoUser.getUser().getAvata());
                     editor.putString("Phone", infoUser.getUser().getPhone());
                     editor.putString("Email", infoUser.getUser().getEmail());
-                    editor.putString("User", infoUser.getUser().getId());
+                    editor.putString("UserID", infoUser.getUser().getId());
                     editor.apply();
+
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    startActivity(intent);
+                    finish();
+                    loading.dismiss();
                 }
             }
 
             @Override
             public void onFailure(Call<InfoUser> call, Throwable t) {
-
+                loading.dismiss();
             }
         });
     }
-
-
-    private void anhXa() {
+    private void initUi() {
+        loading = new ProgressDialog(this);
+        loading.setMessage("Đang đăng nhập...");
         edTaiKhoan = findViewById(R.id.ed_UserName);
         edMatKhau = findViewById(R.id.ed_PassWord);
         btnDangNhap = findViewById(R.id.btn_login);
         btnDangKy = findViewById(R.id.btn_re);
         tvQuenMK = findViewById(R.id.tv_resetPass);
+        errTaiKhoan = findViewById(R.id.txtErrUsername);
+        errMatKhau = findViewById(R.id.txtErrPassword);
+    }
+    private boolean validateLogin(String err, String msg) {
+        // check trống tài khoản
+        if(err.equalsIgnoreCase("errNullU")){
+            errTaiKhoan.setErrorEnabled(true);
+            errTaiKhoan.setError(msg);
+            return false;
+        }else {
+            errTaiKhoan.setErrorEnabled(false);
+            errTaiKhoan.setError("");
+        }
+        // check trông mật khẩu
+        if(err.equalsIgnoreCase("errNullP")){
+            errMatKhau.setErrorEnabled(true);
+            errMatKhau.setError(msg);
+            return false;
+        }else{
+            errMatKhau.setErrorEnabled(false);
+            errMatKhau.setError("");
+        }
+        // sai tài khoản
+        if(err.equalsIgnoreCase("errNotU")){
+            errTaiKhoan.setErrorEnabled(true);
+            errTaiKhoan.setError(msg);
+            return false;
+        }else {
+            errTaiKhoan.setErrorEnabled(false);
+            errTaiKhoan.setError("");
+        }
+        // sai mật khẩu
+        if(err.equalsIgnoreCase("errNotP")){
+            errMatKhau.setErrorEnabled(true);
+            errMatKhau.setError(msg);
+            return false;
+        }else {
+            errMatKhau.setErrorEnabled(false);
+            errMatKhau.setError("");
+        }
+        return true;
     }
 }

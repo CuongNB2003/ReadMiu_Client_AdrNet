@@ -5,8 +5,18 @@ import com.google.gson.annotations.SerializedName;
 public class Login {
     @SerializedName("msg")
     private String msg;
-    @SerializedName("checkLogin")
+    @SerializedName("checkStatus")
     private Boolean check;
+    @SerializedName("error")
+    private String err;
+
+    public String getErr() {
+        return err;
+    }
+
+    public void setErr(String err) {
+        this.err = err;
+    }
 
     public String getMsg() {
         return msg;

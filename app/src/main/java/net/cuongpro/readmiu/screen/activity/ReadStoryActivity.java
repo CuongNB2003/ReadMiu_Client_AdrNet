@@ -44,16 +44,16 @@ public class ReadStoryActivity extends AppCompatActivity {
         String idComic = bundle.getString("idComic");
         tenTruyen.setText(""+name);
 
-//        getListPhoto(idComic);
+        getListPhoto(idComic);
 
         //get theo bundle hơi lâu get theo id còn lâu nữa hmmm
-        photos = bundle.getStringArray("listPhoto");
-        Log.d(LinkApi.TAG, "onCreate: img nd "+photos.length);
-        for(int i = 0; i < photos.length; i++){
-            listPhoto.add(new PhotoList(photos[i]));
-            Log.d(LinkApi.TAG, "onCreate: list ảnh "+listPhoto);
-        }
-        loadData(listPhoto);
+//        photos = bundle.getStringArray("listPhoto");
+//        Log.d(LinkApi.TAG, "onCreate: img nd "+photos.length);
+//        for(int i = 0; i < photos.length; i++){
+//            listPhoto.add(new PhotoList(photos[i]));
+//            Log.d(LinkApi.TAG, "onCreate: list ảnh "+listPhoto);
+//        }
+//        loadData(listPhoto);
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
