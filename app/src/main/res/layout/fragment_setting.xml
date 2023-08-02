@@ -9,7 +9,7 @@
     android:background="@color/mau_nen"
     tools:context=".screen.fragment.SettingFragment">
     <LinearLayout
-        android:visibility="gone"
+        android:visibility="visible"
         android:id="@+id/id_ll_LoginFalse"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -33,17 +33,18 @@
                 style="@style/AppCompatButton"/>
 
             <LinearLayout
-                android:layout_marginTop="18dp"
+                android:layout_marginTop="5dp"
+                android:gravity="center_horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <TextView
-                    style="@style/TextViewNone"
+                    style="@style/TextViewMin"
                     android:layout_width="wrap_content"
                     android:text="Bạn chưa có tài khoản?"/>
                 <TextView
                     android:id="@+id/tv_dangky"
-                    style="@style/TextViewNone"
+                    style="@style/TextViewMin"
                     android:layout_marginLeft="5dp"
                     android:textStyle="bold"
                     android:layout_width="wrap_content"
@@ -133,7 +134,7 @@
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
-        android:visibility="visible"
+        android:visibility="gone"
         android:id="@+id/id_ll_LoginTrue"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -154,22 +155,21 @@
                         android:layout_width="80dp"
                         app:civ_border_width="1dp"
                         app:civ_border_color="@color/text"
-                        android:layout_height="80dp"
+                        android:layout_height="70dp"
                         android:scaleType="centerCrop"
                         android:src="@drawable/ic_ed_username"/>
                     <LinearLayout
-                        android:layout_marginLeft="10dp"
+                        android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
                         <TextView
                             android:id="@+id/tv_fullname"
-                            android:layout_marginTop="10dp"
                             android:text="@string/txtFullname"
-                            style="@style/TextViewBold"/>
+                            style="@style/TextViewTitle"/>
                         <TextView
                             android:id="@+id/tv_email"
-                            android:layout_marginTop="10dp"
+                            android:layout_marginTop="5dp"
                             android:text="@string/txtEdEmail"
                             style="@style/TextViewNone"/>
                     </LinearLayout>
@@ -194,7 +194,7 @@
                     <TextView
                         android:layout_weight="11"
                         android:layout_width="0dp"
-                        style="@style/TextViewBold"
+                        style="@style/TextViewTitle"
                         android:text="Cài đặt"/>
                 </LinearLayout>
                 <LinearLayout
@@ -266,7 +266,7 @@
                         android:layout_weight="1"
                         android:src="@drawable/ic_chucnang"/>
                     <TextView
-                        style="@style/TextViewBold"
+                        style="@style/TextViewTitle"
                         android:layout_weight="11"
                         android:layout_width="0dp"
                         android:text="Chức năng"/>
@@ -347,7 +347,7 @@
                         <TextView
                             android:layout_weight="11"
                             android:layout_width="0dp"
-                            style="@style/TextViewBold"
+                            style="@style/TextViewTitle"
                             android:text="Liên hệ"/>
                     </LinearLayout>
                     <TextView

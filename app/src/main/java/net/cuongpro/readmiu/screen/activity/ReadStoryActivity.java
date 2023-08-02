@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -34,6 +35,7 @@ public class ReadStoryActivity extends AppCompatActivity {
     private String[] photos;
     private List<PhotoList> listPhoto = new ArrayList<>();
     private GetListPhoto getListPhoto;
+    private ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +65,7 @@ public class ReadStoryActivity extends AppCompatActivity {
     }
 
     private void getListPhoto(String id) {
+        progressDialog.show();
         ApiService.apiService.getListPhoto(id).enqueue(new Callback<GetListPhoto>() {
             @Override
             public void onResponse(Call<GetListPhoto> call, Response<GetListPhoto> response) {
@@ -80,7 +83,7 @@ public class ReadStoryActivity extends AppCompatActivity {
                     Log.d(LinkApi.TAG, "onCreate: list ảnh sum2 "+photos.length);
 
                     loadData(listPhoto);
-
+                    progressDialog.dismiss();
                 }
             }
 
@@ -88,17 +91,22 @@ public class ReadStoryActivity extends AppCompatActivity {
             public void onFailure(Call<GetListPhoto> call, Throwable t) {
                 Toast.makeText(ReadStoryActivity.this, "Load list photo fasle", Toast.LENGTH_SHORT).show();
                 Log.d(LinkApi.TAG, "Load List Photo "+t.getLocalizedMessage());
+                progressDialog.dismiss();
             }
         });
     }
 
     private void initUi() {
+        progressDialog = new ProgressDialog(ReadStoryActivity.this);
+        progressDialog.setMessage("Đang load hình ảnh...");
+
         recyclerView = findViewById(R.id.recy_read);
         tenTruyen = findViewById(R.id.tvTenTruyen);
         imgBack = findViewById(R.id.img_backRead);
     }
 
     private void loadData(List<PhotoList> listPhoto) {
+
         adapterComic = new AdapterReadComic(ReadStoryActivity.this);
         adapterComic.setListPhoto(listPhoto);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);

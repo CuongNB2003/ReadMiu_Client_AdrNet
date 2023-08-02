@@ -94,7 +94,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(Call<InfoUser> call, Response<InfoUser> response) {
                 if(response.isSuccessful()){
                     infoUser = response.body();
-                    Log.d(LinkApi.TAG, "onResponse: "+infoUser.getUser().getId());
+//                    Log.d(LinkApi.TAG, "onResponse: check id "+infoUser.getUser().getId());
                     SharedPreferences mySharePref = getSharedPreferences("DataUser", MODE_PRIVATE);
                     SharedPreferences.Editor editor = mySharePref.edit();
                     editor.putBoolean("CheckLogin", true);

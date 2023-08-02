@@ -89,7 +89,7 @@ public class RegActivity extends AppCompatActivity {
                     editor.putString("Avata", infoUser.getUser().getAvata());
                     editor.putString("Phone", infoUser.getUser().getPhone());
                     editor.putString("Email", infoUser.getUser().getEmail());
-                    editor.putString("IDUser", infoUser.getUser().getId());
+                    editor.putString("UserID", infoUser.getUser().getId());
                     editor.apply();
 
                     Intent intent = new Intent(RegActivity.this, MainActivity.class);

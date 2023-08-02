@@ -80,6 +80,8 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.fragment_home, container, false);
         initUi(view);
+        getListComic();
+        getListPhoto();
         timkiem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -100,8 +102,6 @@ public class HomeFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        getListComic();
-        getListPhoto();
     }
 
     private void getListPhoto() {
@@ -112,7 +112,7 @@ public class HomeFragment extends Fragment {
                 if(response.isSuccessful()){
                     getComic = response.body();
 //                    Toast.makeText(getContext(), ""+getComic.getMsg(), Toast.LENGTH_SHORT).show();
-                    Log.d(LinkApi.TAG, "Load dữ liệu list comic thành công: "+ getComic.getMsg());
+//                    Log.d(LinkApi.TAG, "Load dữ liệu list comic thành công: "+ getComic.getMsg());
 
                     try {
                         listSlide = Arrays.asList(getComic.getComics());
@@ -160,7 +160,7 @@ public class HomeFragment extends Fragment {
                 if(response.isSuccessful()){
                     getComic = response.body();
 //                    Toast.makeText(getContext(), ""+getComic.getMsg(), Toast.LENGTH_SHORT).show();
-                    Log.d(LinkApi.TAG, "Load dữ liệu list comic thành công: "+ getComic.getMsg());
+//                    Log.d(LinkApi.TAG, "Load dữ liệu list comic thành công: "+ getComic.getMsg());
                     try {
                         lisComic = Arrays.asList(getComic.getComics());
                     }catch (NullPointerException e){

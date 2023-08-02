@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="40dp"
-    android:background="@drawable/custom_edittext_cmt"
+    android:background="@drawable/background"
     tools:context=".screen.activity.WecomeActivity">
     <TextView
         android:layout_marginTop="100dp"

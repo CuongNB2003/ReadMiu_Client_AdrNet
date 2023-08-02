@@ -29,6 +29,7 @@
         <item name="android:ems">10</item>
         <item name="android:layout_height">48dp</item>
         <item name="android:layout_width">match_parent</item>
+<!--        <item name="fontFamily">cursive</item>-->
     </style>
 
     <style name="AppCompatButton">
@@ -36,49 +37,60 @@
         <item name="android:layout_width">match_parent</item>
         <item name="textAllCaps">false</item>
         <item name="android:textColor">@color/text</item>
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">16sp</item>
+<!--        <item name="fontFamily">cursive</item>-->
     </style>
 
     <style name="TextViewNone">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="fontFamily">serif</item>
         <item name="android:textColor">@color/text</item>
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">16sp</item>
+<!--        <item name="fontFamily">cursive</item>-->
     </style>
 
     <style name="TextViewTitle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="fontFamily">serif</item>
         <item name="android:textColor">@color/text</item>
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">20sp</item>
         <item name="android:textStyle">bold</item>
+<!--        <item name="fontFamily">cursive</item>-->
     </style>
 
     <style name="TextViewBold">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="fontFamily">serif</item>
         <item name="android:textColor">@color/text</item>
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">16sp</item>
         <item name="android:textStyle">bold</item>
+<!--        <item name="fontFamily">cursive</item>-->
     </style>
 
     <style name="TextViewMin">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="fontFamily">serif</item>
         <item name="android:textColor">@color/text</item>
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">12sp</item>
+<!--        <item name="fontFamily">cursive</item>-->
     </style>
 
     <style name="TextViewMax">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="fontFamily">serif</item>
         <item name="android:textColor">@color/text</item>
-        <item name="android:textSize">36sp</item>
+        <item name="android:textSize">24sp</item>
         <item name="android:textStyle">bold</item>
+<!--        <item name="fontFamily">cursive</item>-->
     </style>
+
+    <style name="EditTextComment">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text</item>
+        <item name="android:textColorHint">@color/text</item>
+        <item name="android:textSize">16sp</item>
+<!--        <item name="fontFamily">monospace</item>-->
+    </style>
+
 </resources>
