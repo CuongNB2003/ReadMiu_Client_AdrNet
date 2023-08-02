@@ -4,16 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/mau_nen"
+    android:background="@drawable/background"
     tools:context=".screen.activity.LoginActivity"
     android:padding="30dp">
     <LinearLayout
+        android:padding="25dp"
+        android:layout_gravity="center"
+        android:background="@drawable/background_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <TextView
-            android:layout_marginTop="170dp"
-            android:layout_marginBottom="50dp"
+            android:layout_marginBottom="25dp"
             android:text="@string/txtBtnLogin"
             android:gravity="center"
             style="@style/TextViewMax"/>
@@ -21,8 +23,6 @@
             android:id="@+id/txtErrUsername"
             style="@style/TextInputLayout"
             android:hint="@string/txtEdUser"
-            app:errorEnabled="true"
-            app:helperTextEnabled="true"
             app:endIconMode="clear_text"
             app:startIconDrawable="@drawable/ic_ed_username"
             app:helperTextTextColor="@color/red">
@@ -37,7 +37,6 @@
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/txtErrPassword"
-            android:layout_marginTop="5dp"
             style="@style/TextInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -54,7 +53,7 @@
                 style="@style/TextInputEditText"/>
         </com.google.android.material.textfield.TextInputLayout>
         <androidx.appcompat.widget.AppCompatButton
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="25dp"
             android:id="@+id/btn_login"
             android:text="@string/txtBtnLogin"
             android:background="@drawable/custom_btn_color"
@@ -67,6 +66,7 @@
             android:gravity="center"
             android:text="@string/txtDoiMatKhau"/>
     </LinearLayout>
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_re"
         android:textColor="@color/mau_button"

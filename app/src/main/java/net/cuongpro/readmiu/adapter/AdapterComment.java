@@ -40,17 +40,24 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class AdapterComment extends RecyclerView.Adapter<AdapterComment.ViewCommentHolder> {
-    Context context;
-    List<Comment> listCmt;
+    private Context context;
+    private IClickListener clickListener;
+    private List<Comment> listCmt;
+    private SimpleDateFormat formatter = new SimpleDateFormat("E, HH:mm dd-M");
 
-    SimpleDateFormat formatter = new SimpleDateFormat("E, HH:mm dd-M");
-    public AdapterComment(Context context) {
+    public AdapterComment(Context context, IClickListener clickListener) {
         this.context = context;
+        this.clickListener = clickListener;
     }
 
     public void setListCmt(List<Comment> list){
         this.listCmt = list;
         notifyDataSetChanged();
+    }
+
+    public interface IClickListener{
+        void onClickUpdate(String id, String cmt);
+        void onClickDelete(String id);
     }
 
     @NonNull
@@ -159,9 +166,8 @@ public class AdapterComment extends RecyclerView.Adapter<AdapterComment.ViewComm
 
         edit.setOnClickListener(view1 -> {
             String cmt = noidung.getText().toString();
-            putComment(id, cmt);
+            clickListener.onClickUpdate(id, cmt);
             alertDialog.dismiss();
-            getComment(id);
         });
     }
     private void showDialogDelete(String id) {
@@ -172,66 +178,10 @@ public class AdapterComment extends RecyclerView.Adapter<AdapterComment.ViewComm
         mBuilder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                deleteComment(id);
+                clickListener.onClickDelete(id);
             }
         });
         mBuilder.show();
-    }
-    private void deleteComment(String id) {
-        ApiService.apiService.deletComment(id).enqueue(new Callback<MsgCallApi>() {
-            @Override
-            public void onResponse(Call<MsgCallApi> call, Response<MsgCallApi> response) {
-                if(response.isSuccessful()){
-                    MsgCallApi msgCallApi = response.body();
-                    Toast.makeText(context, ""+msgCallApi.getMsg()+id, Toast.LENGTH_SHORT).show();
-                    Log.d(LinkApi.TAG, "onResponse xóa: "+id);
-                    getComment(id);
-                }
-            }
-
-            @Override
-            public void onFailure(Call<MsgCallApi> call, Throwable t) {
-                Log.d(LinkApi.TAG, "Xóa cmt thất bại "+ t.getLocalizedMessage());
-            }
-        });
-    }
-    private void putComment(String id, String cmt) {
-        ApiService.apiService.putComment(id, cmt).enqueue(new Callback<MsgCallApi>() {
-            @Override
-            public void onResponse(Call<MsgCallApi> call, Response<MsgCallApi> response) {
-                if(response.isSuccessful()){
-                    MsgCallApi msgCallApi = response.body();
-                    Toast.makeText(context, ""+msgCallApi.getMsg()+id, Toast.LENGTH_SHORT).show();
-                    Log.d(LinkApi.TAG, "onResponse sửa: "+id);
-
-                    getComment(id);
-                }
-            }
-
-            @Override
-            public void onFailure(Call<MsgCallApi> call, Throwable t) {
-                Log.d(LinkApi.TAG, "Sửa cmt thất bại "+ t.getLocalizedMessage());
-            }
-        });
-    }
-    private void getComment(String id){
-        ApiService.apiService.getCommetInComic(id).enqueue(new Callback<GetComment>() {
-            @Override
-            public void onResponse(Call<GetComment> call, Response<GetComment> response) {
-                if(response.isSuccessful()){
-                    GetComment getComment = response.body();
-                    listCmt = Arrays.asList(getComment.getComments());
-
-                    setListCmt(listCmt);
-//                    sumCmt = listCmt.size();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<GetComment> call, Throwable t) {
-                Log.d(LinkApi.TAG, "Lỗi get comment "+t.getLocalizedMessage());
-            }
-        });
     }
 
     @Override

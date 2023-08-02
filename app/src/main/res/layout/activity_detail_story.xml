@@ -39,7 +39,9 @@
                             android:src="@drawable/ic_back"
                             android:layout_gravity="center"/>
                         <TextView
+                            android:maxLines="1"
                             android:id="@+id/tv_TenTruyen"
+                            android:textColor="@color/text"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="..."
@@ -72,14 +74,14 @@
                             android:weightSum="10"
                             android:layout_marginBottom="10dp">
                             <TextView
-                                android:textColor="@color/mau_button"
+                                android:textColor="@color/black"
                                 android:layout_weight="9"
                                 android:id="@+id/tv_tenTruyen"
                                 android:layout_width="0dp"
                                 android:text="..."
-                                style="@style/TextViewBold"/>
+                                style="@style/TextViewTitle"/>
                             <ImageView
-                                android:id="@+id/img_Favorite"
+                                android:id="@+id/imgFavorite"
                                 android:layout_weight="1"
                                 android:layout_width="0dp"
                                 android:layout_height="30dp"
@@ -116,10 +118,10 @@
                             android:background="@color/mau_nen"
                             android:textColor="@color/text"
                             android:id="@+id/tv_mota"
-                            android:maxLines="6"
+                            android:maxLines="5"
                             android:text="..."
                             android:paddingBottom="66dp"
-                            style="@style/TextViewNone"/>
+                            style="@style/TextViewMin"/>
                     </RelativeLayout>
                 </LinearLayout>
             </com.google.android.material.appbar.CollapsingToolbarLayout>
@@ -170,6 +172,8 @@
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
     <LinearLayout
         android:background="@color/mau_nen"
         android:elevation="10dp"
@@ -183,26 +187,24 @@
             android:id="@+id/imgAvata"
             android:layout_weight="2"
             android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_height="45dp"
             android:src="@drawable/ic_ed_username"/>
         <LinearLayout
             android:layout_marginLeft="7dp"
             android:background="@drawable/custom_edittext_cmt"
             android:layout_weight="15"
             android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_height="45dp"
             android:weightSum="14"
             android:orientation="horizontal">
             <EditText
                 android:id="@+id/edCmt"
-                android:textSize="14dp"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="10"
                 android:layout_width="0dp"
                 android:hint="Viết gì đó "
-                android:textColor="@color/text"
-                android:textColorHint="@color/text"
-                android:layout_height="match_parent"/>
+                android:layout_gravity="bottom"
+                style="@style/EditTextComment"/>
             <LinearLayout
                 android:layout_gravity="center"
                 android:layout_weight="4"
@@ -215,14 +217,14 @@
                     android:layout_marginLeft="10dp"
                     android:layout_weight="1"
                     android:layout_width="0dp"
-                    android:layout_height="30dp"
+                    android:layout_height="25dp"
                     android:src="@drawable/ic_cmt_icon"/>
                 <ImageView
                     android:layout_marginRight="5dp"
                     android:id="@+id/imgCmt"
                     android:layout_weight="1"
                     android:layout_width="0dp"
-                    android:layout_height="30dp"
+                    android:layout_height="25dp"
                     android:src="@drawable/ic_comment"/>
             </LinearLayout>
         </LinearLayout>
