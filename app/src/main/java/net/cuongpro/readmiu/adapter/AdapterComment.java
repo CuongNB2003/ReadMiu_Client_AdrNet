@@ -97,7 +97,7 @@ public class AdapterComment extends RecyclerView.Adapter<AdapterComment.ViewComm
                     if(idUser.equalsIgnoreCase(obj.getUser().getId())){
                         showDialogPut(obj.getId(), obj.getNoiDungCmt());
                     }else {
-                        Toast.makeText(context, "Bạn không có quyền sửa bình luận này", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(context, "Bạn không có quyền sửa bình luận này", Toast.LENGTH_SHORT).show();
                     }
                 }else {
                     showDialogLogin();
@@ -111,7 +111,7 @@ public class AdapterComment extends RecyclerView.Adapter<AdapterComment.ViewComm
                     if(idUser.equalsIgnoreCase(obj.getUser().getId())){
                         showDialogDelete(obj.getId());
                     }else {
-                        Toast.makeText(context, "Bạn không có quyền xóa bình luận này", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(context, "Bạn không có quyền xóa bình luận này", Toast.LENGTH_SHORT).show();
                     }
                 }else {
                     showDialogLogin();

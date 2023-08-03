@@ -2,13 +2,18 @@ package net.cuongpro.readmiu.screen.activity;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Notification;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,6 +23,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -35,11 +41,17 @@ import net.cuongpro.readmiu.model.model_api.GetComicOne;
 import net.cuongpro.readmiu.model.model_api.GetComment;
 import net.cuongpro.readmiu.model.model_api.GetOneFavorite;
 import net.cuongpro.readmiu.model.model_api.MsgCallApi;
+import net.cuongpro.readmiu.service.NotifyConfig;
 
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
+import io.socket.client.IO;
+import io.socket.client.Socket;
+import io.socket.emitter.Emitter;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -51,7 +63,7 @@ public class DetailStoryActivity extends AppCompatActivity {
     private Button btnDocTruyen;
     private RecyclerView viewComment;
     private GetComicOne comicOne;
-    private String idComic, nameComic, idUser, avata, favorite;
+    private String idComic, nameComic, idUser, avata, favorite, fullname;
     private GetComment getCommet;
     private List<Comment> listCmt = new ArrayList<>();
     private AdapterComment adapterComment;
@@ -60,17 +72,37 @@ public class DetailStoryActivity extends AppCompatActivity {
     private MsgCallApi msgCallApi;
     private boolean checkFavorite, checkLogin;
     private GetOneFavorite getOneFavorite;
+    private Socket mSocket;
+    {
+        try {
+            mSocket = IO.socket(LinkApi.linkUrl);
+        } catch (URISyntaxException e) {}
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_story);
         initUi();
+        // lắng nghe sự kiện
+        mSocket.on("user comments", new Emitter.Listener() {
+            @Override
+            public void call(Object... args) {
+                String data = (String) args[0];
+                DetailStoryActivity.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        postNotify("Thông báo", data);
+                    }
+                });
+            }
+        });
+
         // set ảnh vào edit cmt
         SharedPreferences sharedPreferences = getSharedPreferences("DataUser", Context.MODE_PRIVATE);
         checkLogin = sharedPreferences.getBoolean("CheckLogin", false);
         avata = sharedPreferences.getString("Avata","");
         idUser = sharedPreferences.getString("UserID", "");
-
+        fullname = sharedPreferences.getString("FullName","");
         Bundle bundle = getIntent().getExtras();
         idComic = bundle.getString("idComic");
 
@@ -81,7 +113,6 @@ public class DetailStoryActivity extends AppCompatActivity {
         Glide.with(DetailStoryActivity.this).load(LinkApi.linkUrl + avata)
                 .error(R.drawable.ic_ed_username)
                 .into(imgAvata);
-
 
         Log.d(LinkApi.TAG, "onCreate:Sau "+checkFavorite);
         if(checkLogin){
@@ -135,6 +166,7 @@ public class DetailStoryActivity extends AppCompatActivity {
                         comment.setUser(new User(idUser));
                         comment.setNoiDungCmt(edCmt.getText().toString());
                         postCmt(comment);
+                        mSocket.emit("user comments", fullname+" vừa bình luận vào truyện "+nameComic);
                     }
                 }else {
                     showDialogLogin();
@@ -155,6 +187,35 @@ public class DetailStoryActivity extends AppCompatActivity {
 //        getComicOne(idComic);
 //        getCommetInComic(idComic);
 //        getOneFavorite(idUser, idComic);
+    }
+    private void postNotify(String title, String content){
+        // Khởi tạo layout cho Notify
+        Notification customNotification = new NotificationCompat.Builder(DetailStoryActivity.this, NotifyConfig.CHANEL_ID)
+                .setSmallIcon(android.R.drawable.ic_delete)
+                .setContentTitle( title )
+                .setContentText(content)
+                .setAutoCancel(true)
+
+                .build();
+        // Khởi tạo Manager để quản lý notify
+        NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(DetailStoryActivity.this);
+
+        // Cần kiểm tra quyền trước khi hiển thị notify
+        if (ActivityCompat.checkSelfPermission(DetailStoryActivity.this,
+                android.Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+
+            // Gọi hộp thoại hiển thị xin quyền người dùng
+            ActivityCompat.requestPermissions(DetailStoryActivity.this,
+                    new String[]{android.Manifest.permission.POST_NOTIFICATIONS}, 999999);
+            Toast.makeText(DetailStoryActivity.this, "Chưa cấp quyền", Toast.LENGTH_SHORT).show();
+            return; // thoát khỏi hàm nếu chưa được cấp quyền
+        }
+        // nếu đã cấp quyền rồi thì sẽ vượt qua lệnh if trên và đến đây thì hiển thị notify
+        // mỗi khi hiển thị thông báo cần tạo 1 cái ID cho thông báo riêng
+        int id_notiy = (int) new Date().getTime();// lấy chuỗi time là phù hợp
+        //lệnh hiển thị notify
+        notificationManagerCompat.notify(id_notiy , customNotification);
+
     }
     private void getOneFavorite(String idUser, String idComic) {
         ApiService.apiService.getOneFavorite(idUser, idComic).enqueue(new Callback<GetOneFavorite>() {
@@ -327,6 +388,9 @@ public class DetailStoryActivity extends AppCompatActivity {
         });
     }
     private void initUi() {
+        // mở kết nối
+        mSocket.connect();
+
         loading = new ProgressDialog(this);
 
         imgBack = findViewById(R.id.img_backDetal);
