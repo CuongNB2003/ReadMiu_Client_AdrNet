@@ -32,10 +32,12 @@ public class AdapterSlides extends RecyclerView.Adapter<AdapterSlides.PhotoViewH
     Context context;
     List<Comic> listPhoto;
 
-    public AdapterSlides(Context context, List<Comic> listPhoto) {
+    public AdapterSlides(Context context) {
         this.context = context;
+    }
+
+    public void setData(List<Comic> listPhoto) {
         this.listPhoto = listPhoto;
-        notifyDataSetChanged();
     }
 
     @NonNull

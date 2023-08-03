@@ -54,17 +54,18 @@ public class HomeFragment extends Fragment {
     private SwipeRefreshLayout refreshLayout;
     private ProgressDialog loading;
 
-    private Handler handler = new Handler();
-    private Runnable runnable = new Runnable() {
+    Handler handler = new Handler();
+    Runnable runnable = new Runnable() {
         @Override
         public void run() {
             try {
-                if(viewPager2.getCurrentItem() == lisComic.size() -1){
+                if (viewPager2.getCurrentItem() == listSlide.size() - 1) {
                     viewPager2.setCurrentItem(0);
-                }else {
+                } else {
                     viewPager2.setCurrentItem(viewPager2.getCurrentItem() + 1);
                 }
             }catch (NullPointerException e){
+
             }
         }
     };
@@ -106,19 +107,12 @@ public class HomeFragment extends Fragment {
 
     private void getListPhoto() {
         loading.show();
-        ApiService.apiService.getListComic(3, 3).enqueue(new Callback<GetComic>() {
+        ApiService.apiService.getListComic(2, 3).enqueue(new Callback<GetComic>() {
             @Override
             public void onResponse(Call<GetComic> call, Response<GetComic> response) {
                 if(response.isSuccessful()){
                     getComic = response.body();
-//                    Toast.makeText(getContext(), ""+getComic.getMsg(), Toast.LENGTH_SHORT).show();
-//                    Log.d(LinkApi.TAG, "Load dữ liệu list comic thành công: "+ getComic.getMsg());
-
-                    try {
-                        listSlide = Arrays.asList(getComic.getComics());
-                    }catch (NullPointerException e){
-
-                    }
+                    listSlide = Arrays.asList(getComic.getComics());
                     setLayoutPhoto(listSlide);
                     loading.dismiss();
                 }
@@ -126,32 +120,26 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onFailure(Call<GetComic> call, Throwable t) {
-                try {
-                    Log.d(LinkApi.TAG, "Load data comic thất bại"+t.getLocalizedMessage());
-                    Toast.makeText(getContext(), "Hãy kết nối với mạng", Toast.LENGTH_SHORT).show();
-                }catch (NullPointerException e){
-                    Log.d(LinkApi.TAG, "NullPointerException"+e.getMessage());
-                }
+                Log.d(LinkApi.TAG, "Load data comic thất bại"+t.getLocalizedMessage());
                 loading.dismiss();
             }
         });
     }
     private void setLayoutPhoto(List<Comic> listSlide) {
-        adapterSlides = new AdapterSlides(getContext(), listSlide);
+        adapterSlides = new AdapterSlides(getContext());
+        adapterSlides.setData(listSlide);
         viewPager2.setAdapter(adapterSlides);
         chuyenSlide.setViewPager(viewPager2);
-
+        viewPager2.setPageTransformer(new ZoomOutPageTransformer());
         viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
                 handler.removeCallbacks(runnable);
-                handler.postDelayed(runnable, 5000);
+                handler.postDelayed(runnable, 4000);
             }
         });
-        viewPager2.setPageTransformer(new ZoomOutPageTransformer());
     }
-
     private void getListComic() {
         loading.show();
         ApiService.apiService.getListComic(1, 10).enqueue(new Callback<GetComic>() {
@@ -159,13 +147,7 @@ public class HomeFragment extends Fragment {
             public void onResponse(Call<GetComic> call, Response<GetComic> response) {
                 if(response.isSuccessful()){
                     getComic = response.body();
-//                    Toast.makeText(getContext(), ""+getComic.getMsg(), Toast.LENGTH_SHORT).show();
-//                    Log.d(LinkApi.TAG, "Load dữ liệu list comic thành công: "+ getComic.getMsg());
-                    try {
-                        lisComic = Arrays.asList(getComic.getComics());
-                    }catch (NullPointerException e){
-
-                    }
+                    lisComic = Arrays.asList(getComic.getComics());
                     setLayoutComic(lisComic);
                     loading.dismiss();
                 }
@@ -173,17 +155,11 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onFailure(Call<GetComic> call, Throwable t) {
-                try {
-                    Log.d(LinkApi.TAG, "Load data comic thất bại"+t.getLocalizedMessage());
-                    Toast.makeText(getContext(), "Hãy kết nối với mạng", Toast.LENGTH_SHORT).show();
-                }catch (NullPointerException e){
-                    Log.d(LinkApi.TAG, "NullPointerException"+e.getMessage());
-                }
+                Log.d(LinkApi.TAG, "Load data comic thất bại"+t.getLocalizedMessage());
                 loading.dismiss();
             }
         });
     }
-
     private void setLayoutComic(List<Comic> lisComic) {
         adapterRecyComic = new AdapterComic(getContext());
         adapterRecyComic.setListComic(lisComic);
@@ -191,7 +167,6 @@ public class HomeFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapterRecyComic);
     }
-
     private void initUi(View view) {
         loading = new ProgressDialog(getContext());
         loading.setMessage("Đang load truyện...");
@@ -202,7 +177,6 @@ public class HomeFragment extends Fragment {
         recyclerView = view.findViewById(R.id.recy_comic);
         refreshLayout = view.findViewById(R.id.refreshLayout);
     }
-
     @Override
     public void onPause() {
         super.onPause();
@@ -212,6 +186,6 @@ public class HomeFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        handler.postDelayed(runnable, 5000);
+        handler.postDelayed(runnable, 4000);
     }
 }
