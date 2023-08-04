@@ -84,18 +84,7 @@ public class DetailStoryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail_story);
         initUi();
         // lắng nghe sự kiện
-        mSocket.on("user comments", new Emitter.Listener() {
-            @Override
-            public void call(Object... args) {
-                String data = (String) args[0];
-                DetailStoryActivity.this.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        postNotify("Thông báo", data);
-                    }
-                });
-            }
-        });
+        mSocket.on("user comments", newComment);
 
         // set ảnh vào edit cmt
         SharedPreferences sharedPreferences = getSharedPreferences("DataUser", Context.MODE_PRIVATE);
@@ -188,6 +177,19 @@ public class DetailStoryActivity extends AppCompatActivity {
 //        getCommetInComic(idComic);
 //        getOneFavorite(idUser, idComic);
     }
+
+    private Emitter.Listener newComment = new Emitter.Listener() {
+        @Override
+        public void call(Object... args) {
+            String data = (String) args[0];
+            DetailStoryActivity.this.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    postNotify("Thông báo", data);
+                }
+            });
+        }
+    };
     private void postNotify(String title, String content){
         // Khởi tạo layout cho Notify
         Notification customNotification = new NotificationCompat.Builder(DetailStoryActivity.this, NotifyConfig.CHANEL_ID)

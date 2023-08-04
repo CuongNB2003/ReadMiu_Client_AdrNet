@@ -59,7 +59,10 @@ public class RegActivity extends AppCompatActivity {
 
         // mở kết nối
         mSocket.connect();
-        // lắng nghe sự kiện
+//        mSocket.on("get user", LoginUser);
+
+
+
         Bundle bundle = getIntent().getExtras();
         String fullname = bundle.getString("fullname");
         String email = bundle.getString("email");
@@ -76,6 +79,20 @@ public class RegActivity extends AppCompatActivity {
             }
         });
     }
+
+
+    private Emitter.Listener LoginUser = new Emitter.Listener() {
+        @Override
+        public void call(Object... args) {
+            String data = (String) args[0];
+            RegActivity.this.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    postNotify("Đăng nhập thành công", data);
+                }
+            });
+        }
+    };
     private void postNotify(String title, String content){
         // Khởi tạo layout cho Notify
         Notification customNotification = new NotificationCompat.Builder(RegActivity.this, NotifyConfig.CHANEL_ID)
@@ -146,7 +163,9 @@ public class RegActivity extends AppCompatActivity {
                     startActivity(intent);
                     finish();
                     loading.dismiss();
-                    postNotify("Tạo tài khoản thành công", "Chào mừng "+infoUser.getUser().getFullname()+ " đến với readmiu");
+                    mSocket.emit("get user", infoUser.getUser().getFullname());
+                    postNotify("Tạo tài khoản thành công",
+                            "Chào mừng "+infoUser.getUser().getFullname()+ " đến với readmiu");
                 }
             }
 

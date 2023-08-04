@@ -19,7 +19,7 @@
         <item name="android:layout_width">match_parent</item>
 <!--        số lượng đc phép nhập vào-->
         <item name="counterEnabled">true</item>
-        <item name="counterMaxLength">20</item>
+        <item name="counterMaxLength">50</item>
         <item name="counterTextColor">@color/text</item>
     </style>
 

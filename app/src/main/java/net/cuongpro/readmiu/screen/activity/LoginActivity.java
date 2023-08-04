@@ -59,19 +59,7 @@ public class LoginActivity extends AppCompatActivity {
         initUi();
         // mở kết nối
         mSocket.connect();
-        mSocket.on("login user", new Emitter.Listener() {
-            @Override
-            public void call(Object... args) {
-                String data = (String) args[0];
-                LoginActivity.this.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        postNotify("Đăng nhập thành công", data);
-                    }
-                });
-            }
-        });
-//        mSocket.disconnect();
+//        mSocket.on("get user", LoginUser);
         btnDangKy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -99,6 +87,18 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    private Emitter.Listener LoginUser = new Emitter.Listener() {
+        @Override
+        public void call(Object... args) {
+            String data = (String) args[0];
+            LoginActivity.this.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    postNotify("Đăng nhập thành công", data);
+                }
+            });
+        }
+    };
     private void postNotify(String title, String content){
         // Khởi tạo layout cho Notify
         Notification customNotification = new NotificationCompat.Builder(LoginActivity.this, NotifyConfig.CHANEL_ID)
@@ -128,7 +128,6 @@ public class LoginActivity extends AppCompatActivity {
         notificationManagerCompat.notify(id_notiy , customNotification);
 
     }
-
     private void LoginApp(String username, String password) {
         ApiService.apiService.loginApp(username, password).enqueue(new Callback<Login>() {
             @Override
@@ -173,7 +172,9 @@ public class LoginActivity extends AppCompatActivity {
                     startActivity(intent);
                     finish();
                     loading.dismiss();
-                    mSocket.emit("login user", "Chào mừng "+infoUser.getUser().getFullname()+" đã quay trở lại.");
+                    mSocket.emit("get user", infoUser.getUser().getFullname());
+                    postNotify("Đăng nhập thành công",
+                            "Chào mừng "+infoUser.getUser().getFullname()+" đã quay trở lại.");
                 }
             }
 

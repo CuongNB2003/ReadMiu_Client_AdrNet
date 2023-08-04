@@ -27,6 +27,11 @@ import net.cuongpro.readmiu.screen.activity.LoginActivity;
 import net.cuongpro.readmiu.screen.activity.MainActivity;
 import net.cuongpro.readmiu.screen.activity.RegActivity;
 
+import java.net.URISyntaxException;
+
+import io.socket.client.IO;
+import io.socket.client.Socket;
+
 public class SettingFragment extends Fragment {
     Button btnLogin, btnLogout;
     ImageView imgAvata;

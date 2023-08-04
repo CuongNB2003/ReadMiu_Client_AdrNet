@@ -59,6 +59,8 @@ public class InfoUserActivity extends AppCompatActivity {
         });
     }
     private boolean validateInfoUser(String fullname, String email, String phone) {
+        String regexEmail = "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?";
+        String regexPhone = "/(03|05|07|08|09|01[2|6|8|9])+([0-9]{8})\\b/";
         // check trống tài khoản
         if(fullname.isEmpty()){
             errFullname.setErrorEnabled(true);
@@ -68,7 +70,7 @@ public class InfoUserActivity extends AppCompatActivity {
             errFullname.setErrorEnabled(false);
             errFullname.setError("");
         }
-        // check trông mật khẩu
+        // check trông email
         if(email.isEmpty()){
             errEmail.setErrorEnabled(true);
             errEmail.setError("Bạn cần điền email");
@@ -77,7 +79,15 @@ public class InfoUserActivity extends AppCompatActivity {
             errEmail.setErrorEnabled(false);
             errEmail.setError("");
         }
-        // sai tài khoản
+        if(!email.matches(regexEmail)){
+            errEmail.setErrorEnabled(true);
+            errEmail.setError("Email sai định dạng !");
+            return false;
+        }else{
+            errEmail.setErrorEnabled(false);
+            errEmail.setError("");
+        }
+        // số điện thoại
         if(phone.isEmpty()){
             errPhone.setErrorEnabled(true);
             errPhone.setError("Bạn cần điền số điện thoại");
@@ -86,6 +96,15 @@ public class InfoUserActivity extends AppCompatActivity {
             errPhone.setErrorEnabled(false);
             errPhone.setError("");
         }
+        // số điện thoại
+//        if(!phone.matches(regexPhone)){
+//            errPhone.setErrorEnabled(true);
+//            errPhone.setError("Số điện thoại chưa đúng");
+//            return false;
+//        }else {
+//            errPhone.setErrorEnabled(false);
+//            errPhone.setError("");
+//        }
         return true;
     }
 
