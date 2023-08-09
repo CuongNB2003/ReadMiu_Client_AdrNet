@@ -22,6 +22,8 @@ import com.bumptech.glide.Glide;
 
 import net.cuongpro.readmiu.R;
 import net.cuongpro.readmiu.api.LinkApi;
+import net.cuongpro.readmiu.screen.activity.ChangeInfoActivity;
+import net.cuongpro.readmiu.screen.activity.ChangePassActivity;
 import net.cuongpro.readmiu.screen.activity.InfoUserActivity;
 import net.cuongpro.readmiu.screen.activity.LoginActivity;
 import net.cuongpro.readmiu.screen.activity.MainActivity;
@@ -67,13 +69,15 @@ public class SettingFragment extends Fragment {
         changeInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dialog("Chức năng đang được phát triên, Bạn hãy quay lại sau nhé");
+                Intent intent = new Intent(getActivity(), ChangeInfoActivity.class);
+                startActivity(intent);
             }
         });
         changePass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dialog("Chức năng đang được phát triên, Bạn hãy quay lại sau nhé");
+                Intent intent = new Intent(getActivity(), ChangePassActivity.class);
+                startActivity(intent);
             }
         });
         myHistory.setOnClickListener(new View.OnClickListener() {

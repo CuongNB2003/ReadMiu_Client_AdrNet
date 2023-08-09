@@ -71,8 +71,8 @@ public class LoginActivity extends AppCompatActivity {
         btnDangNhap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String taikhoan = edTaiKhoan.getText().toString();
-                String matkhau = edMatKhau.getText().toString();
+                String taikhoan = edTaiKhoan.getText().toString().trim();
+                String matkhau = edMatKhau.getText().toString().trim();
                 LoginApp(taikhoan, matkhau);
 
             }
@@ -136,7 +136,6 @@ public class LoginActivity extends AppCompatActivity {
                     login = response.body();
                     if(validateLogin(login.getErr(), login.getMsg())){
                         if(login.getCheck() == true){
-//                            Toast.makeText(LoginActivity.this, ""+login.getMsg(), Toast.LENGTH_SHORT).show();
                             GetInfoUser(username);
                         }
                     }
@@ -161,8 +160,8 @@ public class LoginActivity extends AppCompatActivity {
                     SharedPreferences mySharePref = getSharedPreferences("DataUser", MODE_PRIVATE);
                     SharedPreferences.Editor editor = mySharePref.edit();
                     editor.putBoolean("CheckLogin", true);
-                    editor.putString("FullName", infoUser.getUser().getFullname());
                     editor.putString("Avata", infoUser.getUser().getAvata());
+                    editor.putString("FullName", infoUser.getUser().getFullname());
                     editor.putString("Phone", infoUser.getUser().getPhone());
                     editor.putString("Email", infoUser.getUser().getEmail());
                     editor.putString("UserID", infoUser.getUser().getId());

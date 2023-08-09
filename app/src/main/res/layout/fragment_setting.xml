@@ -9,7 +9,7 @@
     android:background="@color/mau_nen"
     tools:context=".screen.fragment.SettingFragment">
     <LinearLayout
-        android:visibility="visible"
+        android:visibility="gone"
         android:id="@+id/id_ll_LoginFalse"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -134,7 +134,7 @@
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
-        android:visibility="gone"
+        android:visibility="visible"
         android:id="@+id/id_ll_LoginTrue"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -180,152 +180,163 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp" />
                 <LinearLayout
-                    android:weightSum="12"
                     android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <ImageView
-                        android:paddingTop="2dp"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:src="@drawable/ic_setting"/>
-                    <TextView
-                        android:layout_weight="11"
-                        android:layout_width="0dp"
-                        style="@style/TextViewTitle"
-                        android:text="Cài đặt"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_marginTop="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:orientation="vertical">
                     <LinearLayout
-                        android:id="@+id/id_changeInfo"
-                        android:weightSum="10"
+                        android:weightSum="12"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
-                        <TextView
-                            android:layout_weight="9"
-                            android:layout_width="0dp"
-                            android:text="@string/txtTTCN"
-                            style="@style/TextViewNone"/>
                         <ImageView
-                            android:layout_weight="1"
+                            android:paddingTop="2dp"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/ic_back_right"/>
+                            android:layout_weight="1"
+                            android:src="@drawable/ic_setting"/>
+                        <TextView
+                            android:layout_weight="11"
+                            android:layout_width="0dp"
+                            style="@style/TextViewTitle"
+                            android:text="Cài đặt"/>
                     </LinearLayout>
-                    <TextView
-                        android:layout_marginTop="5dp"
-                        android:background="@color/thang_ngang"
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp" />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_marginTop="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
                     <LinearLayout
-                        android:id="@+id/id_changePass"
-                        android:weightSum="10"
+                        android:layout_marginTop="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                        <TextView
-                            android:text="@string/txtDMK"
-                            android:layout_weight="9"
-                            android:layout_width="0dp"
-                            style="@style/TextViewNone"/>
-                        <ImageView
-                            android:layout_weight="1"
-                            android:layout_width="0dp"
+                        android:orientation="vertical">
+                        <LinearLayout
+                            android:id="@+id/id_changeInfo"
+                            android:weightSum="10"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/ic_back_right"/>
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_weight="9"
+                                android:layout_width="0dp"
+                                android:text="@string/txtTTCN"
+                                style="@style/TextViewNone"/>
+                            <ImageView
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_back_right"/>
+                        </LinearLayout>
+                        <TextView
+                            android:layout_marginTop="5dp"
+                            android:background="@color/thang_ngang"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp" />
                     </LinearLayout>
-                    <TextView
-                        android:layout_marginTop="5dp"
-                        android:background="@color/thang_ngang"
+                    <LinearLayout
+                        android:layout_marginTop="10dp"
                         android:layout_width="match_parent"
-                        android:layout_height="1dp" />
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <LinearLayout
+                            android:id="@+id/id_changePass"
+                            android:weightSum="10"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:text="@string/txtDMK"
+                                android:layout_weight="9"
+                                android:layout_width="0dp"
+                                style="@style/TextViewNone"/>
+                            <ImageView
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_back_right"/>
+                        </LinearLayout>
+                        <TextView
+                            android:layout_marginTop="5dp"
+                            android:background="@color/thang_ngang"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp" />
+                    </LinearLayout>
                 </LinearLayout>
                 <LinearLayout
-                    android:weightSum="12"
+                    android:visibility="gone"
                     android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <ImageView
-                        android:paddingTop="2dp"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:src="@drawable/ic_chucnang"/>
-                    <TextView
-                        style="@style/TextViewTitle"
-                        android:layout_weight="11"
-                        android:layout_width="0dp"
-                        android:text="Chức năng"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_marginTop="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:orientation="vertical">
                     <LinearLayout
-                        android:id="@+id/id_DanhSachYeuThich"
-                        android:weightSum="10"
+                        android:weightSum="12"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
-                        <TextView
-                            android:text="@string/txtDSYT"
-                            android:layout_weight="9"
-                            android:layout_width="0dp"
-                            style="@style/TextViewNone"/>
                         <ImageView
-                            android:layout_weight="1"
+                            android:paddingTop="2dp"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/ic_back_right"/>
+                            android:layout_weight="1"
+                            android:src="@drawable/ic_chucnang"/>
+                        <TextView
+                            style="@style/TextViewTitle"
+                            android:layout_weight="11"
+                            android:layout_width="0dp"
+                            android:text="Chức năng"/>
                     </LinearLayout>
-                    <TextView
-                        android:layout_marginTop="5dp"
-                        android:background="@color/thang_ngang"
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp" />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_marginTop="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
                     <LinearLayout
-                        android:id="@+id/id_LichSuDoc"
-                        android:weightSum="10"
+                        android:layout_marginTop="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                        <TextView
-                            android:text="@string/txtLSD"
-                            android:layout_weight="9"
-                            android:layout_width="0dp"
-                            style="@style/TextViewNone"/>
-                        <ImageView
-                            android:layout_weight="1"
-                            android:layout_width="0dp"
+                        android:orientation="vertical">
+                        <LinearLayout
+                            android:id="@+id/id_DanhSachYeuThich"
+                            android:weightSum="10"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/ic_back_right"/>
+                            android:orientation="horizontal">
+                            <TextView
+                                android:text="@string/txtDSYT"
+                                android:layout_weight="9"
+                                android:layout_width="0dp"
+                                style="@style/TextViewNone"/>
+                            <ImageView
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_back_right"/>
+                        </LinearLayout>
+                        <TextView
+                            android:layout_marginTop="5dp"
+                            android:background="@color/thang_ngang"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp" />
                     </LinearLayout>
-                    <TextView
-                        android:layout_marginTop="5dp"
-                        android:background="@color/thang_ngang"
+                    <LinearLayout
+                        android:layout_marginTop="10dp"
                         android:layout_width="match_parent"
-                        android:layout_height="1dp" />
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <LinearLayout
+                            android:id="@+id/id_LichSuDoc"
+                            android:weightSum="10"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:text="@string/txtLSD"
+                                android:layout_weight="9"
+                                android:layout_width="0dp"
+                                style="@style/TextViewNone"/>
+                            <ImageView
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_back_right"/>
+                        </LinearLayout>
+                        <TextView
+                            android:layout_marginTop="5dp"
+                            android:background="@color/thang_ngang"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp" />
+                    </LinearLayout>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_marginTop="20dp"
@@ -334,7 +345,6 @@
                     android:orientation="vertical">
                     <LinearLayout
                         android:weightSum="12"
-                        android:layout_marginTop="20dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">

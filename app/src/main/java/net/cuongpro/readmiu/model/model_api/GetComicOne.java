@@ -9,6 +9,17 @@ public class GetComicOne {
     private String msg;
     @SerializedName("data")
     private Comic comic;
+    @SerializedName("sum")
+    private int sumFavorite;
+
+
+    public int getSumFavorite() {
+        return sumFavorite;
+    }
+
+    public void setSumFavorite(int sumFavorite) {
+        this.sumFavorite = sumFavorite;
+    }
 
     public String getMsg() {
         return msg;

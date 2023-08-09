@@ -46,4 +46,8 @@
     <string name="txtEdPassNew">Pass New</string>
     <string name="txtEdRePassNew">Re-PassNew</string>
     <string name="txtYeuThich">My Favorite</string>
+    <string name="txtPassRetri">Hãy nhập đầy đủ thông tin để chúng tôi giúp bạn lấy lại tài khoản.</string>
+    <string name="txtChangePass">Đổi mật khẩu</string>
+    <string name="txtChangeInfo">Đổi thông tin</string>
+    <string name="txtInfo">Hãy điền đầy đủ thông tin của bạn để có trải nghiệm tốt nhât.</string>
 </resources>

@@ -1,6 +1,7 @@
 package net.cuongpro.readmiu.screen.fragment;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -30,6 +31,7 @@ import net.cuongpro.readmiu.model.model_api.GetComic;
 import net.cuongpro.readmiu.model.slide.DepthPageTransformer;
 import net.cuongpro.readmiu.model.slide.Photo;
 import net.cuongpro.readmiu.model.slide.ZoomOutPageTransformer;
+import net.cuongpro.readmiu.screen.activity.SearchActivity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -86,7 +88,8 @@ public class HomeFragment extends Fragment {
         timkiem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getContext(), "Chức năng tìm kiếm", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getContext(), SearchActivity.class);
+                startActivity(intent);
             }
         });
         refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {

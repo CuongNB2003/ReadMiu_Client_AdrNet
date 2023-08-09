@@ -44,7 +44,7 @@ public interface ApiService {
     @GET("comic")
     Call<GetComic> getListComic(@Query("page") int page, @Query("limit") int limit);
     @GET("comic")
-    Call<GetComic> getListPhoto(@Query("page") int page, @Query("limit") int limit);
+    Call<GetComic> getAllComic();
     @GET("comic/{id}/detail")
     Call<GetComicOne> getComic(@Path("id") String id);
     @GET("comic/{id}/read")
@@ -65,4 +65,8 @@ public interface ApiService {
     Call<MsgCallApi> deleteFavorite (@Path("id") String id);
     @GET("favorite")
     Call<GetOneFavorite> getOneFavorite(@Query("iduser") String iduser, @Query("idcomic") String idcomic);
+    @POST("change-pass/{id}")
+    Call<Login> changePass(@Path("id") String id, @Query("pass") String pass, @Query("pass_new") String passnew, @Query("pass_re") String passre);
+    @POST("change-info/{id}")
+    Call<Login> changeInfo(@Path("id") String id, @Query("fullname") String fullName, @Query("email") String email, @Query("phone") String phone);
 }

@@ -58,7 +58,7 @@ import retrofit2.Response;
 
 public class DetailStoryActivity extends AppCompatActivity {
     private ImageView imgBack, imgComic, imgFavorite, imgAvata, imgGuiCmt, imgGuiIcon;
-    private TextView tenTruyen, tenTacGia, namXuatBan, moTa, tvTieuDe, tvTongBL;
+    private TextView tenTruyen, tenTacGia, namXuatBan, moTa, tvTieuDe, tvTongBL, tvTongFavorite;
     private EditText edCmt;
     private Button btnDocTruyen;
     private RecyclerView viewComment;
@@ -84,7 +84,7 @@ public class DetailStoryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail_story);
         initUi();
         // lắng nghe sự kiện
-        mSocket.on("user comments", newComment);
+        mSocket.on("add comment", newComment);
 
         // set ảnh vào edit cmt
         SharedPreferences sharedPreferences = getSharedPreferences("DataUser", Context.MODE_PRIVATE);
@@ -97,7 +97,7 @@ public class DetailStoryActivity extends AppCompatActivity {
 
         getComicOne(idComic);
         getCommetInComic(idComic);
-        getOneFavorite(idUser, idComic);
+//        getOneFavorite(idUser, idComic);
 
         Glide.with(DetailStoryActivity.this).load(LinkApi.linkUrl + avata)
                 .error(R.drawable.ic_ed_username)
@@ -105,16 +105,34 @@ public class DetailStoryActivity extends AppCompatActivity {
 
         Log.d(LinkApi.TAG, "onCreate:Sau "+checkFavorite);
         if(checkLogin){
-            if(checkFavorite){
-                imgFavorite.setImageResource(R.drawable.ic_favorite_true);
-            }else {
-                imgFavorite.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        showDialogFavorite();
+            ApiService.apiService.getOneFavorite(idUser, idComic).enqueue(new Callback<GetOneFavorite>() {
+                @Override
+                public void onResponse(Call<GetOneFavorite> call, Response<GetOneFavorite> response) {
+                    if(response.isSuccessful()){
+                        getOneFavorite = response.body();
+                        if(getOneFavorite.getStatus()){
+                            imgFavorite.setImageResource(R.drawable.ic_favorite_true);
+
+                        }else {
+                            imgFavorite.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    Favorite favorite = new Favorite();
+                                    favorite.setIdUser(idUser);
+                                    favorite.setFavorite(true);
+                                    favorite.setComic(new Comic(idComic));
+                                    postFavorite(favorite);
+                                }
+                            });
+                        }
                     }
-                });
-            }
+                }
+
+                @Override
+                public void onFailure(Call<GetOneFavorite> call, Throwable t) {
+
+                }
+            });
         }else {
             imgFavorite.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -155,7 +173,7 @@ public class DetailStoryActivity extends AppCompatActivity {
                         comment.setUser(new User(idUser));
                         comment.setNoiDungCmt(edCmt.getText().toString());
                         postCmt(comment);
-                        mSocket.emit("user comments", fullname+" vừa bình luận vào truyện "+nameComic);
+//                        mSocket.emit("user comments", fullname+" vừa bình luận vào truyện "+nameComic);
                     }
                 }else {
                     showDialogLogin();
@@ -190,6 +208,8 @@ public class DetailStoryActivity extends AppCompatActivity {
             });
         }
     };
+
+
     private void postNotify(String title, String content){
         // Khởi tạo layout cho Notify
         Notification customNotification = new NotificationCompat.Builder(DetailStoryActivity.this, NotifyConfig.CHANEL_ID)
@@ -301,9 +321,10 @@ public class DetailStoryActivity extends AppCompatActivity {
                             .into(imgComic);
                     tenTruyen.setText(""+comicOne.getComic().getTenChuyen());
                     tvTieuDe.setText(""+comicOne.getComic().getTenChuyen());
-                    tenTacGia.setText(""+comicOne.getComic().getTenTacGia());
-                    namXuatBan.setText(""+comicOne.getComic().getNamXuatBan());
-                    moTa.setText(""+comicOne.getComic().getMotaChuyen());
+                    tenTacGia.setText("Tên tác giả: "+comicOne.getComic().getTenTacGia());
+                    namXuatBan.setText("Năm xuất bản: "+comicOne.getComic().getNamXuatBan());
+                    moTa.setText("Mô tả: "+comicOne.getComic().getMotaChuyen());
+                    tvTongFavorite.setText(comicOne.getSumFavorite()+" lượt thích");
                     //lấy dữ liệu gửi sang read
                     idComic = comicOne.getComic().getId();
                     nameComic = comicOne.getComic().getTenChuyen();
@@ -380,6 +401,7 @@ public class DetailStoryActivity extends AppCompatActivity {
                 if(response.isSuccessful()){
                     msgCallApi = response.body();
 //                    Toast.makeText(DetailStoryActivity.this, ""+msgCallApi.getMsg(), Toast.LENGTH_SHORT).show();
+                    imgFavorite.setImageResource(R.drawable.ic_favorite_true);
                 }
             }
 
@@ -389,6 +411,7 @@ public class DetailStoryActivity extends AppCompatActivity {
             }
         });
     }
+
     private void initUi() {
         // mở kết nối
         mSocket.connect();
@@ -412,6 +435,7 @@ public class DetailStoryActivity extends AppCompatActivity {
         edCmt = findViewById(R.id.edCmt);
 
         tvTongBL = findViewById(R.id.tv_tongBL);
+        tvTongFavorite = findViewById(R.id.tv_SumFavorite);
     }
     private boolean validateCmt() {
         if(edCmt.getText().toString().isEmpty()){
@@ -457,33 +481,6 @@ public class DetailStoryActivity extends AppCompatActivity {
         btnOK.setOnClickListener(view1 -> {
             Intent intent = new Intent(DetailStoryActivity.this, LoginActivity.class);
             startActivity(intent);
-            alertDialog.dismiss();
-        });
-    }
-    private void showDialogFavorite(){
-        AlertDialog.Builder builder = new AlertDialog.Builder(DetailStoryActivity.this);
-        View view = LayoutInflater.from(DetailStoryActivity.this).inflate(R.layout.dialog_login, null);
-        builder.setView(view);
-        AlertDialog alertDialog = builder.create();
-        alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
-        alertDialog.show();
-        // dialog
-        Button btnHuy = view.findViewById(R.id.btnCancelLogin);
-        Button btnOK = view.findViewById(R.id.btnLogin);
-        TextView tvMess = view.findViewById(R.id.tvMess);
-        btnOK.setText("Ok");
-        tvMess.setText("Bạn có muốn thêm truyện vào danh sách yêu thích ?");
-        btnHuy.setOnClickListener(view1 -> {
-            alertDialog.dismiss();
-        });
-
-        btnOK.setOnClickListener(view1 -> {
-            Favorite favorite = new Favorite();
-            favorite.setIdUser(idUser);
-            favorite.setFavorite(true);
-            favorite.setComic(new Comic(idComic));
-            postFavorite(favorite);
-            imgFavorite.setImageResource(R.drawable.ic_favorite_true);
             alertDialog.dismiss();
         });
     }

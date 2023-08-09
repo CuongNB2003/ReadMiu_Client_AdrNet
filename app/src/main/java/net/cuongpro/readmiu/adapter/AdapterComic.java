@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,7 +24,7 @@ import net.cuongpro.readmiu.screen.activity.DetailStoryActivity;
 
 import java.util.List;
 
-public class AdapterComic extends RecyclerView.Adapter<AdapterComic.ViewComicHolder> {
+public class AdapterComic extends RecyclerView.Adapter<AdapterComic.ViewComicHolder>{
     Context context;
     List<Comic> listComic;
 

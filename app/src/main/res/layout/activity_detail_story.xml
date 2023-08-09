@@ -103,8 +103,9 @@
                                 android:text="..."
                                 style="@style/TextViewNone"/>
                             <TextView
+                                android:gravity="end"
                                 android:textColor="@color/text"
-                                android:id="@+id/tv_namXuatBan"
+                                android:id="@+id/tv_SumFavorite"
                                 android:layout_weight="4"
                                 android:layout_width="0dp"
                                 android:text="..."
@@ -113,7 +114,15 @@
                         <TextView
                             android:paddingLeft="15dp"
                             android:paddingRight="15dp"
-                            android:layout_below="@id/line2"
+                            android:background="@color/mau_nen"
+                            android:layout_below="@+id/line2"
+                            android:id="@+id/tv_namXuatBan"
+                            android:text="..."
+                            style="@style/TextViewNone"/>
+                        <TextView
+                            android:paddingLeft="15dp"
+                            android:paddingRight="15dp"
+                            android:layout_below="@id/tv_namXuatBan"
                             android:background="@color/mau_nen"
                             android:textColor="@color/text"
                             android:id="@+id/tv_mota"
